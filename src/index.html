@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="HomeClinicStore brings modern diabetes, blood-pressure, heart-health and remote monitoring technology into the home." />
+  <meta name="theme-color" content="#0f2119" />
+  <title>HomeClinicStore | Modern healthcare at home</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="nav-wrap" id="top">
+    <nav class="nav shell" aria-label="Primary navigation">
+      <a class="brand" href="#top" aria-label="HomeClinicStore home">
+        <span class="brand-mark" aria-hidden="true">H</span>
+        <span>HomeClinicStore</span>
+      </a>
+      <div class="nav-links" id="nav-links">
+        <a href="#shop">Shop</a><a href="#diabetes">Diabetes</a><a href="#heart">Heart Health</a>
+        <a href="#caregrid">Remote Monitoring</a><a href="#services">Services</a><a href="#learn">Learn</a>
+      </div>
+      <div class="nav-actions">
+        <a class="nav-quiet" href="#shop">Browse products</a>
+        <a class="btn btn-dark" href="#shop">Shop health tech <span>↗</span></a>
+        <button id="menu-toggle" class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+          <span></span><span></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero shell section">
+      <div class="hero-copy reveal">
+        <div class="eyebrow">Next-gen healthcare at home</div>
+        <h1>Your health.<br><span>Connected at home.</span></h1>
+        <p>Modern tools for diabetes, blood pressure, heart health and chronic care — designed to make everyday monitoring simpler, clearer and more connected.</p>
+        <div class="hero-actions">
+          <a class="btn btn-accent" href="#cgm">Explore CGM <span>↗</span></a>
+          <a class="btn btn-ghost" href="#conditions">Find your solution</a>
+        </div>
+        <div class="trust-row"><span>✓ Trusted home-health technology</span><span>✓ Professional biomedical support</span></div>
+      </div>
+
+      <div class="hero-visual reveal" aria-label="Continuous glucose monitoring dashboard concept">
+        <div class="glow g1"></div><div class="glow g2"></div>
+        <div class="monitor-card glass">
+          <div class="monitor-head"><span>Glucose now</span><span class="live-dot">Live</span></div>
+          <div class="glucose">6.1 <small>mmol/L</small></div>
+          <div class="stable">↗ Stable trend</div>
+          <svg class="trend-chart" viewBox="0 0 360 120" role="img" aria-label="Stable glucose trend chart">
+            <path d="M0 82 C35 76 48 42 86 55 S139 91 172 67 S224 35 260 48 S322 74 360 38" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+          </svg>
+          <div class="mini-metrics"><div><span>Time in range</span><strong>91%</strong></div><div><span>Avg glucose</span><strong>6.5</strong></div></div>
+        </div>
+        <div class="float-chip chip-a">24/7 insight</div><div class="float-chip chip-b">Better daily decisions</div>
+      </div>
+    </section>
+
+    <section id="cgm" class="shell cgm section-sm reveal">
+      <div><span class="kicker">Continuous Glucose Monitoring</span><h2>Know more than a single glucose reading.</h2><p>CGM helps reveal direction, patterns and changes throughout the day so diabetes management can become more informed and less reactive.</p></div>
+      <div class="stats"><div><strong>24/7</strong><span>continuous insight</span></div><div><strong>Trends</strong><span>not isolated numbers</span></div><div><strong>Home</strong><span>monitoring made simple</span></div></div>
+    </section>
+
+    <section id="conditions" class="shell section reveal">
+      <div class="section-head"><div><span class="kicker">Start with what matters to you</span><h2>Health technology built around real needs.</h2></div><p>Shop and learn by condition, not by confusing technical categories.</p></div>
+      <div class="need-grid">
+        <article><div class="icon">◌</div><h3>Manage Diabetes</h3><p>CGM and home monitoring tools for clearer daily decisions.</p><a href="#shop">Explore →</a></article>
+        <article><div class="icon">♡</div><h3>Monitor Blood Pressure</h3><p>Track hypertension trends with dependable home devices.</p><a href="#shop">Explore →</a></article>
+        <article><div class="icon">↗</div><h3>Protect Heart Health</h3><p>Stay closer to the signals that shape cardiovascular wellbeing.</p><a href="#shop">Explore →</a></article>
+        <article><div class="icon">＋</div><h3>Monitor From Home</h3><p>Bring connected chronic-care monitoring into everyday life.</p><a href="#caregrid">Explore →</a></article>
+      </div>
+    </section>
+
+    <section id="shop" class="product-zone section reveal">
+      <div class="shell">
+        <div class="section-head"><div><span class="kicker">Featured health technology</span><h2>Designed for everyday confidence.</h2></div><a class="inline-link" href="#shop">View all products →</a></div>
+        <div class="product-grid">
+          <article class="product"><div class="product-art lime"><span class="pill">Connected care</span><div class="device-disc">CGM</div></div><div class="product-copy"><small>Continuous glucose monitoring</small><h3>Anytime 5 Pro CGM</h3><p>24/7 glucose insight</p><a href="#contact">Discover product →</a></div></article>
+          <article class="product"><div class="product-art blue"><span class="pill">Connected care</span><div class="device-disc">BP</div></div><div class="product-copy"><small>Hypertension care</small><h3>Smart BP Monitor</h3><p>Connected blood pressure</p><a href="#contact">Discover product →</a></div></article>
+          <article class="product"><div class="product-art lilac"><span class="pill">Connected care</span><div class="device-disc">ECG</div></div><div class="product-copy"><small>Heart health</small><h3>ECG Health Watch</h3><p>Everyday rhythm insight</p><a href="#contact">Discover product →</a></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="shell stories section reveal">
+      <article id="heart" class="story dark"><span class="kicker">Cardiovascular + hypertension</span><h2>Small readings can tell a bigger story.</h2><p>Regular home blood-pressure and heart monitoring can make trends easier to spot and conversations with healthcare professionals more useful.</p><a class="btn btn-light" href="#shop">Explore heart health →</a></article>
+      <article id="diabetes" class="story light"><span class="kicker">Diabetes management</span><h2>See the pattern, not just the number.</h2><p>Pair continuous glucose insight with practical home monitoring so everyday decisions are supported by richer information.</p><a class="btn btn-dark" href="#cgm">Explore diabetes care →</a></article>
+    </section>
+
+    <section id="caregrid" class="caregrid section reveal">
+      <div class="shell caregrid-grid">
+        <div><span class="eyebrow dark-pill">CareGrid remote monitoring</span><h2>From home readings to connected care.</h2><p>CareGrid brings vital trends, chronic-care monitoring and meaningful alerts into one connected layer for patients and care teams.</p><div class="feature-chips"><span>Connected vitals</span><span>Long-term trends</span><span>Meaningful alerts</span><span>Patient-provider connection</span></div></div>
+        <div class="dashboard glass-dark"><div class="dash-head"><span>CareGrid health overview</span><span class="live-badge">Live</span></div><div class="dash-state"><small>Today's overview</small><strong>Stable</strong><p>3 of 3 key signals within your usual range.</p></div><div class="dash-metrics"><div><span>Blood pressure</span><strong>122/78</strong></div><div><span>Glucose</span><strong>6.1</strong></div><div><span>Heart rate</span><strong>72</strong></div></div></div>
+      </div>
+    </section>
+
+    <section id="services" class="shell services section reveal">
+      <div><span class="kicker">Biomedical support</span><h2>Health technology needs dependable support behind it.</h2><p>HomeClinicStore combines modern health devices with servicing, calibration, repair and practical device support.</p></div>
+      <div class="service-list"><div><span>01</span><strong>Servicing</strong><b>↗</b></div><div><span>02</span><strong>Calibration</strong><b>↗</b></div><div><span>03</span><strong>Repair</strong><b>↗</b></div><div><span>04</span><strong>Device support</strong><b>↗</b></div></div>
+    </section>
+
+    <section id="learn" class="shell learn section-sm reveal"><div><span class="kicker">Understand your health</span><h2>Better monitoring starts with better understanding.</h2></div><div class="learn-links"><a href="#cgm">CGM explained simply <span>→</span></a><a href="#heart">Why blood-pressure trends matter <span>→</span></a><a href="#caregrid">What remote monitoring can do <span>→</span></a></div></section>
+
+    <section id="contact" class="shell section reveal"><div class="cta"><div><span class="eyebrow dark-pill">Health technology, closer to home</span><h2>Make home monitoring part of everyday care.</h2><p>Discover connected devices, chronic-care tools and professional support from HomeClinicStore.</p></div><div class="cta-actions"><a class="btn btn-light" href="#shop">Shop health technology →</a><a class="btn btn-outline" href="#services">Explore services</a></div></div></section>
+  </main>
+
+  <footer class="footer shell"><div class="brand"><span class="brand-mark">H</span><span>HomeClinicStore</span></div><p>Modern healthcare at home.</p><div><a href="#shop">Shop</a><a href="#caregrid">CareGrid</a><a href="#services">Services</a><a href="#learn">Learn</a></div><small>© 2026 HomeClinicStore. Health information on this site does not replace professional medical advice.</small></footer>
+</body>
+</html>
