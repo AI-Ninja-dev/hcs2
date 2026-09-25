@@ -32,6 +32,11 @@ jobs:
       - name: Build site
         run: npm run build
 
+      - name: Preserve custom domain
+        run: |
+          printf '%s\n' 'homeclinicstore.co.za' > dist/CNAME
+          test "$(cat dist/CNAME)" = "homeclinicstore.co.za"
+
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
         with:
