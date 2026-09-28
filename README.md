@@ -19,7 +19,7 @@ The production build is written to `dist/`.
 
 ## Storefront redesign
 
-The storefront uses a dark green palette, mint accents and responsive layouts inspired by Loydtech. It retains the original section anchors and three catalogue entries, with no framework or runtime dependencies added.
+The storefront uses a warm ivory backgrounds, soft sage surfaces, medical blue accents and responsive layouts inspired by Loydtech. The original HomeClinicStore logo is reused from `AI-Ninja-dev/homeclinicstore/public/hcs-logo.png` without alteration. It retains the original section anchors and three catalogue entries, with no framework or runtime dependencies added.
 
 Product search and category filters work together. Device details open in keyboard-accessible dialogs. Visitors can add devices to a session-only enquiry list, remove them, and download a text enquiry draft. If browser storage is unavailable, the list works in memory until the page reloads. No payment, order processing or message sending is implemented.
 

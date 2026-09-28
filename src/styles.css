@@ -1,14 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap");
 :root {
-  color-scheme: dark;
-  --bg: #101c19;
-  --surface: #172722;
-  --soft: #20372e;
-  --ink: #f0f4ef;
-  --muted: #adbeb4;
-  --line: #ffffff20;
-  --accent: #b6e9cc;
-  --deep: #0c1713;
+  color-scheme: light;
+  --bg: #faf8f3;
+  --surface: #ffffff;
+  --soft: #edf2eb;
+  --ink: #263c40;
+  --muted: #566b6b;
+  --line: #d5dfd8;
+  --accent: #285f87;
+  --deep: #ffffff;
   --radius: 18px;
 }
 * {
@@ -112,7 +112,7 @@ small {
   position: sticky;
   top: 0;
   z-index: 40;
-  background: #101c19f2;
+  background: #faf8f3f2;
   border-bottom: 1px solid var(--line);
   backdrop-filter: blur(18px);
 }
@@ -134,16 +134,13 @@ small {
   letter-spacing: -0.055em;
   white-space: nowrap;
 }
-.brand-mark {
-  display: grid;
-  place-items: center;
-  width: 34px;
-  height: 34px;
-  border: 1px solid #b6e9cc70;
-  border-radius: 10px;
-  color: var(--accent);
-  font-size: 20px;
+.brand-logo {
+  display: block;
+  width: 230px;
+  max-width: 100%;
+  height: auto;
 }
+.brand { flex-shrink: 0; }
 .nav-links,
 .nav-actions {
   display: flex;
@@ -188,7 +185,7 @@ small {
   color: var(--deep);
 }
 .btn:hover {
-  background: #cef5de;
+  background: #204d6d;
   color: var(--deep);
 }
 .btn-ghost,
@@ -269,16 +266,16 @@ small {
   border: 1px solid var(--line);
   border-radius: 24px;
   background:
-    radial-gradient(ellipse at 70% 30%, #42745a45, transparent 65%),
-    repeating-linear-gradient(0deg, transparent 0 39px, #ffffff04 39px 40px),
-    repeating-linear-gradient(90deg, transparent 0 39px, #ffffff04 39px 40px),
-    #14241d;
+    radial-gradient(ellipse at 70% 30%, #d6e4cf80, transparent 65%),
+    repeating-linear-gradient(0deg, transparent 0 39px, #5475610b 39px 40px),
+    repeating-linear-gradient(90deg, transparent 0 39px, #5475610b 39px 40px),
+    #e8efe5;
 }
 .visual-label {
   position: absolute;
   top: 24px;
   left: 26px;
-  color: #aec6b7;
+  color: #526c61;
   font-size: 8px;
   letter-spacing: 0.13em;
 }
@@ -288,10 +285,10 @@ small {
 .monitor-card {
   position: relative;
   padding: 26px;
-  background: #172923;
-  border: 1px solid #ffffff26;
+  background: #fffefa;
+  border: 1px solid #d4ded4;
   border-radius: 16px;
-  box-shadow: 0 26px 65px #07100a50;
+  box-shadow: 0 26px 65px #3c58421a;
   transform: rotate(-3deg);
   margin-block: 40px 15px;
 }
@@ -344,7 +341,7 @@ small {
   background: repeating-linear-gradient(
     0deg,
     transparent 0 35px,
-    #ffffff0b 35px 36px
+    #43664d15 35px 36px
   );
 }
 .mini-metrics {
@@ -377,10 +374,10 @@ small {
   background: var(--accent);
   color: var(--deep);
   border-radius: 7px;
-  box-shadow: 0 8px 30px #07100a40;
+  box-shadow: 0 8px 30px #3c58421a;
 }
 .chip-a .signal-dot {
-  background: #347350;
+  background: #ffffff;
 }
 .chip-b {
   bottom: 22px;
@@ -475,7 +472,7 @@ small {
   padding-block: 8px;
 }
 .product-zone {
-  background: #14231d;
+  background: #eef3ed;
   border-block: 1px solid var(--line);
 }
 .catalog-tools {
@@ -496,14 +493,14 @@ small {
 .search-field input {
   padding: 14px 16px;
   width: 100%;
-  border: 1px solid #ffffff35;
+  border: 1px solid #b5c7c4;
   border-radius: 7px;
   background: var(--bg);
   color: var(--ink);
   font-size: 13px;
 }
 .search-field input::placeholder {
-  color: #a2b4a9;
+  color: #596f70;
 }
 .filters {
   display: flex;
@@ -538,7 +535,7 @@ small {
 }
 .product-art {
   height: 270px;
-  background: #d9e5dc;
+  background: #e4ebdc;
   border-radius: 14px;
   position: relative;
   display: grid;
@@ -547,10 +544,10 @@ small {
   overflow: hidden;
 }
 .product:nth-child(2) .product-art {
-  background: #c8d9d0;
+  background: #e0eaf0;
 }
 .product:nth-child(3) .product-art {
-  background: #bacec1;
+  background: #eee3d6;
 }
 .pill {
   position: absolute;
@@ -681,7 +678,7 @@ small {
   color: var(--accent);
 }
 .product-link:hover {
-  color: white;
+  color: #204d6d;
 }
 .stories {
   display: grid;
@@ -708,10 +705,10 @@ small {
   margin-bottom: 32px;
 }
 .story.light {
-  background: #20362b;
+  background: #eee7db;
 }
 .caregrid {
-  background: #14231d;
+  background: #eef3ed;
   border-block: 1px solid var(--line);
 }
 .caregrid-grid {
@@ -734,8 +731,8 @@ small {
 }
 .dashboard {
   padding: 28px;
-  background: #1c3026;
-  border: 1px solid #ffffff2a;
+  background: #fffefa;
+  border: 1px solid #d4ded4;
   border-radius: 16px;
 }
 .dash-head {
@@ -827,8 +824,8 @@ small {
   display: grid;
   grid-template-columns: 1fr 0.6fr;
   gap: 65px;
-  border: 1px solid #b6e9cc40;
-  background: #20392c;
+  border: 1px solid #c8d6c5;
+  background: #e4eddf;
   padding: 55px;
   border-radius: 20px;
 }
@@ -842,7 +839,7 @@ small {
 .cta-actions .enquiry-note {
   font-size: 11px;
   margin: 2px 0;
-  color: #baccbd;
+  color: #52675b;
 }
 .cta-actions p[role="status"] {
   font-size: 12px;
@@ -907,13 +904,13 @@ dialog {
   max-height: 85dvh;
   background: var(--surface);
   color: var(--ink);
-  border: 1px solid #ffffff35;
+  border: 1px solid #b5c7c4;
   border-radius: 18px;
   padding: 30px;
-  box-shadow: 0 30px 80px #0006;
+  box-shadow: 0 30px 80px #2b44352b;
 }
 dialog::backdrop {
-  background: #07130fbb;
+  background: #253c4266;
   backdrop-filter: blur(5px);
 }
 .dialog-top {
@@ -1004,7 +1001,7 @@ dialog #save-status {
     background: var(--surface);
     border: 1px solid var(--line);
     border-radius: 10px;
-    box-shadow: 0 20px 30px #07100a70;
+    box-shadow: 0 20px 30px #3c584225;
   }
   .nav-links a {
     padding: 10px;
@@ -1065,6 +1062,7 @@ dialog #save-status {
   }
 }
 @media (max-width: 700px) {
+  .brand-logo { width: 225px; max-width: calc(100vw - 115px); }
   html {
     scroll-padding-top: 90px;
   }
