@@ -30,4 +30,5 @@ Device illustrations and health dashboards are explicitly conceptual. Before ena
 - `npm run build` includes the repository validation checks.
 - Browser review at desktop (1440px) and mobile (390px) sizes.
 - Search, category filters, no-results state, product dialog, adding to enquiry list, and mobile menu opening/closing checked interactively.
-- Enquiry download action produces its success state; the embedded browser did not expose a download completion event. Confirm file saving in the target deployment browser before release.
+- Live-site enquiry downloads verified on 2 October 2026 in installed, visible Google Chrome 154: empty list, selected devices, removal and mobile viewport. The browser completed each download and the saved text contents were checked.
+- See [the post-redesign release check](docs/RELEASE-CHECK.md) for coverage and remaining business inputs. The storefront is suitable for a catalogue/concept preview; customer release still requires a verified contact destination and approved product and commercial details.
