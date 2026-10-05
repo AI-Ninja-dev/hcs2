@@ -2242,3 +2242,40 @@ dialog dt {
 .shop-lifestyle-grid p{max-width:560px;line-height:1.75}
 @media(max-width:800px){.home-life-heading,.home-life-grid,.shop-lifestyle-grid{grid-template-columns:1fr;gap:28px}.home-life-section,.shop-lifestyle-band{padding:70px 0}.home-life-card,.home-life-card-wide{min-height:380px}.shop-lifestyle-grid figure{min-height:380px}}
 @media(max-width:520px){.home-life-card,.home-life-card-wide,.shop-lifestyle-grid figure{min-height:320px;border-radius:22px}.home-life-card figcaption{left:20px;right:20px;bottom:20px}.home-life-card figcaption strong{font-size:19px}}
+
+
+/* CareGrid depth + online biomedical service capture */
+.caregrid-lead-note{margin-top:12px;color:#617184;line-height:1.7}
+.caregrid-actions{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:26px}
+.caregrid-depth{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:42px}
+.caregrid-depth article{padding:28px;border-radius:22px;background:#fff;border:1px solid #dfe7ef}
+.caregrid-depth article>span,.caregrid-capabilities .eyebrow{font-size:11px;letter-spacing:.12em;color:#587a98;font-weight:700}
+.caregrid-depth h3{margin:15px 0 10px;font-size:21px}
+.caregrid-depth p{margin:0;font-size:14px;line-height:1.65}
+.caregrid-capabilities{display:grid;grid-template-columns:.82fr 1.18fr;gap:56px;margin-top:28px;padding:38px;border-radius:28px;background:#edf3f7}
+.caregrid-capabilities h3{font-size:32px;margin:12px 0 12px}
+.caregrid-capabilities>div p{line-height:1.7}
+.caregrid-capabilities ul{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.caregrid-capabilities li{padding:18px;background:#fff;border-radius:16px}
+.caregrid-capabilities li strong,.caregrid-capabilities li span{display:block}
+.caregrid-capabilities li strong{color:#203a53;margin-bottom:6px}
+.caregrid-capabilities li span{font-size:13px;line-height:1.5;color:#66778a}
+.caregrid-simple{margin-top:28px;padding:34px 0 0;border-top:1px solid #dbe4ec}
+.caregrid-simple h3{max-width:880px;font-size:30px;margin:12px 0}
+.caregrid-simple p{max-width:900px;line-height:1.7}
+.service-online-panel{display:grid;grid-template-columns:.9fr 1.1fr;gap:50px;padding:38px;margin-top:32px;border-radius:28px;background:#f0f4f7}
+.service-online-panel h3,.service-scope h3,.service-capture h3{font-size:28px;margin:12px 0}
+.service-online-panel p,.service-scope p,.service-capture p{line-height:1.7}
+.service-online-steps{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.service-online-steps span{display:flex;align-items:center;gap:12px;padding:15px 16px;border-radius:15px;background:#fff;font-size:14px}
+.service-online-steps b{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:#214e72;color:#fff;font-size:12px}
+.service-scope{display:grid;grid-template-columns:.8fr 1.2fr;gap:50px;margin-top:34px;align-items:start}
+.service-scope-grid{display:flex;flex-wrap:wrap;gap:10px}
+.service-scope-grid span{padding:11px 14px;border:1px solid #d7e2eb;border-radius:999px;background:#fff;font-size:13px}
+.service-capture{margin-top:36px;padding:30px 32px;border-radius:24px;background:#173b56;color:#fff;display:flex;align-items:center;justify-content:space-between;gap:30px}
+.service-capture .eyebrow{color:#b9d5e7}
+.service-capture h3{color:#fff}
+.service-capture p{color:#d8e4ec;margin-bottom:0;max-width:760px}
+.service-capture .btn{flex-shrink:0;background:#fff;color:#173b56}
+@media(max-width:900px){.caregrid-depth{grid-template-columns:1fr}.caregrid-capabilities,.service-online-panel,.service-scope{grid-template-columns:1fr}.caregrid-capabilities ul{grid-template-columns:1fr 1fr}.service-capture{align-items:flex-start;flex-direction:column}}
+@media(max-width:620px){.caregrid-capabilities{padding:25px}.caregrid-capabilities ul,.service-online-steps{grid-template-columns:1fr}.caregrid-simple h3,.service-online-panel h3,.service-scope h3,.service-capture h3{font-size:24px}.service-capture{padding:24px}}
