@@ -1572,3 +1572,84 @@ dialog dt {
   .lifestyle-card:hover img,
   .wellness-card:hover img { transform: none; }
 }
+
+
+/* Smarter contextual image placement */
+.cgm { grid-template-columns: 1fr 1fr; align-items: start; }
+.cgm-side { display: grid; gap: 22px; }
+.context-photo {
+  margin: 0;
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  min-height: 310px;
+  background: #d0e1f3;
+  border: 1px solid var(--line);
+}
+.context-photo img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+}
+.context-photo figcaption {
+  position: absolute; left: 16px; right: 16px; bottom: 16px;
+  display: grid; gap: 4px; padding: 14px 16px;
+  border-radius: 12px; background: #173f72db; color: #fff;
+  backdrop-filter: blur(10px);
+}
+.context-photo figcaption span {
+  font-size: 9px; text-transform: uppercase; letter-spacing: .11em; opacity: .8;
+}
+.context-photo figcaption strong { font: 600 16px Manrope, sans-serif; }
+
+.family-banner {
+  padding: 28px 0 78px;
+  background: linear-gradient(180deg,#fff 0%,#f4f8fd 100%);
+}
+.family-banner-grid {
+  display: grid; grid-template-columns: .8fr 1.2fr; gap: 36px; align-items: center;
+}
+.family-banner-copy { padding: 26px 0; }
+.family-banner-copy h2 { max-width: 560px; }
+.family-banner-copy p { color: var(--muted); max-width: 55ch; }
+.family-banner-photo {
+  margin: 0; overflow: hidden; border-radius: 24px; min-height: 420px;
+  box-shadow: 0 24px 60px #173f7218;
+}
+.family-banner-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.services { grid-template-columns: .85fr 1.15fr; }
+.services-side { display: grid; gap: 18px; }
+.context-photo-respiratory { min-height: 280px; }
+.service-list { margin-top: 0; }
+
+.healthy-strip {
+  padding: 80px 0;
+  background: #f7fbff;
+  border-block: 1px solid var(--line);
+}
+.healthy-strip-head {
+  display: flex; justify-content: space-between; gap: 40px; align-items: end; margin-bottom: 28px;
+}
+.healthy-strip-head h2 { margin-bottom: 0; }
+.healthy-strip-head p { max-width: 440px; color: var(--muted); margin-bottom: 6px; }
+.healthy-strip-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+.healthy-strip-grid figure {
+  margin: 0; position: relative; overflow: hidden; border-radius: 18px; min-height: 300px;
+}
+.healthy-strip-grid img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.healthy-strip-grid figcaption {
+  position: absolute; left: 12px; bottom: 12px; padding: 9px 12px;
+  background: #173f72d9; color: #fff; border-radius: 999px;
+  font-size: 11px; font-weight: 700; backdrop-filter: blur(8px);
+}
+
+@media (max-width: 980px) {
+  .family-banner-grid { grid-template-columns: 1fr; }
+  .services { grid-template-columns: 1fr; }
+  .healthy-strip-head { align-items: start; flex-direction: column; }
+}
+@media (max-width: 700px) {
+  .cgm { grid-template-columns: 1fr; }
+  .family-banner-photo { min-height: 320px; }
+  .healthy-strip-grid { grid-template-columns: 1fr; }
+  .healthy-strip-grid figure { min-height: 250px; }
+}
