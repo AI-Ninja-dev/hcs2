@@ -38,10 +38,10 @@ if ("IntersectionObserver" in window) {
 
 const products = {
   diabetes: {
-    name: "Yuwell Anytime 5Pro CGM",
-    description: "Continuous glucose monitoring for everyday diabetes management. Current sensor availability, supported phones and setup requirements are confirmed before order.",
-    image: "images/products/yuwell-anytime-5pro.webp",
-    alt: "Yuwell Anytime 5Pro CGM applicator",
+    name: "Yuwell Anytime CT3 CGM",
+    description: "HomeClinicStore’s flagship CGM for adults 18+: a 14-day sensor paired with a reusable rechargeable transmitter and supported Bluetooth app for continuous glucose readings, trends and alerts. Current stock, supported phones and setup requirements are confirmed before order.",
+    image: "https://cdeonline.co.za/wp-content/uploads/2024/08/AutoAppl-1-jpg.webp",
+    alt: "Yuwell Anytime CT3 CGM auto-applicator and sensor",
   },
   "blood-pressure": {
     name: "Yuwell YE660E BP Monitor",
