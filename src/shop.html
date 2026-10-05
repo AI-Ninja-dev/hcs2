@@ -3,322 +3,281 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Shop HomeClinicStore for Yuwell home-health devices for diabetes, hypertension, cardiovascular awareness, respiratory care and chronic-disease monitoring at home." />
-  <meta name="theme-color" content="#173f72" />
+  <meta name="description" content="Shop HomeClinicStore for connected home-health devices, CGM, blood-pressure monitoring, pulse oximetry, respiratory care and everyday home monitoring." />
+  <meta name="theme-color" content="#f7f8f6" />
   <link rel="icon" href="hcs-logo.png" type="image/png" />
   <title>Shop Home Health Devices | HomeClinicStore</title>
   <link rel="stylesheet" href="styles.css" />
+  <script defer src="shop.js"></script>
 </head>
-<body id="top" class="shop-page shop-pro">
+<body id="top" class="shop-launch">
   <a class="skip-link" href="#shop-main">Skip to products</a>
-  <header class="nav-wrap">
+
+  <header class="nav-wrap shop-launch-nav">
     <nav class="nav shell" aria-label="Primary navigation">
       <a class="brand" href="index.html" aria-label="HomeClinicStore home">
         <img class="brand-logo" src="hcs-logo.png" alt="HomeClinicStore" width="920" height="180" />
       </a>
-      <div class="nav-links shop-nav-links">
+      <div class="nav-links" id="shop-nav-links">
         <a href="shop.html" aria-current="page">Shop</a>
-        <a href="#diabetes-shop">Diabetes</a>
-        <a href="#hypertension-shop">Hypertension</a>
-        <a href="#cardio-shop">Heart & stroke risk</a>
-        <a href="#chronic-shop">Home monitoring</a>
+        <a href="#cgm-shop">CGM</a>
+        <a href="#products">Devices</a>
+        <a href="#support">Support</a>
+        <a href="index.html#caregrid">CareGrid</a>
       </div>
-      <div class="nav-actions"><a class="btn btn-dark" href="index.html#contact">Enquire <span>↗</span></a></div>
+      <div class="nav-actions">
+        <a class="btn btn-dark" href="#request">Request price</a>
+        <button id="shop-menu-toggle" class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="shop-nav-links"><span></span><span></span></button>
+      </div>
     </nav>
   </header>
 
   <main id="shop-main">
-    <section class="shell shop-pro-hero">
-      <div class="shop-pro-copy">
-        <span class="eyebrow">HOMECLINICSTORE · HOME HEALTH TECHNOLOGY</span>
-        <h1>Professional home health, made easier.</h1>
-        <p>Shop trusted home-monitoring and care equipment for diabetes, hypertension, cardiovascular awareness, respiratory support and long-term chronic-disease management.</p>
+    <section class="shell shop-launch-hero reveal">
+      <div class="shop-launch-copy">
+        <span class="eyebrow">HOMECLINICSTORE · SOUTH AFRICA</span>
+        <h1>Home health,<br><span>carefully selected.</span></h1>
+        <p>Connected medical devices and trusted home-monitoring equipment for diabetes, hypertension, cardiovascular health, respiratory care and everyday health management.</p>
         <div class="hero-actions">
-          <a class="btn btn-accent" href="#featured-products">Shop devices <span>↗</span></a>
-          <a class="btn btn-ghost" href="#shop-by-need">Shop by health need</a>
+          <a class="btn btn-accent" href="#products">Browse all devices <span>↗</span></a>
+          <a class="text-link" href="#cgm-shop">Shop CGM →</a>
         </div>
-        <div class="shop-trust-row">
-          <span>Yuwell home-health range</span><span>Biomedical support</span><span>South Africa</span>
-        </div>
-      </div>
-      <div class="shop-pro-hero-visual">
-        <div class="shop-hero-product">
-          <span class="shop-hero-label">Featured</span>
-          <img src="images/products/yuwell-anytime-5pro.webp" alt="Yuwell Anytime 5Pro continuous glucose monitor" width="900" height="900" fetchpriority="high" decoding="async" />
-          <div>
-            <small>Continuous glucose monitoring</small>
-            <strong>Yuwell Anytime 5Pro</strong>
-            <p>Designed for continuous glucose insight at home.</p>
-          </div>
+        <div class="shop-launch-trust">
+          <span>Home medical devices</span><span>Biomedical support</span><span>CareGrid pathway</span>
         </div>
       </div>
-    </section>
 
-    <section class="shop-lifestyle-banner">
-      <div class="shell shop-lifestyle-grid">
-        <figure>
-          <img src="https://images.pexels.com/photos/5790820/pexels-photo-5790820.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Adult reviewing home health information with family support" loading="lazy" decoding="async" />
-        </figure>
+      <div class="shop-launch-hero-card">
+        <span class="shop-launch-badge">FLAGSHIP · CGM</span>
+        <img src="images/products/yuwell-anytime-5pro.webp" alt="Yuwell Anytime 5Pro continuous glucose monitoring system" width="900" height="900" fetchpriority="high" decoding="async" />
         <div>
-          <span class="kicker">Monitoring that fits real life</span>
-          <h2>From a reading to a routine.</h2>
-          <p>Good home monitoring is not about staring at numbers. It is about making regular checks easier to understand and easier to discuss with your healthcare professional.</p>
+          <small>Yuwell Anytime 5Pro</small>
+          <strong>Continuous glucose monitoring</strong>
+          <a href="#cgm-shop">View product →</a>
         </div>
       </div>
     </section>
 
-    <nav class="shop-nav shop-category-nav" aria-label="Shop categories">
-      <div class="shell shop-nav-inner">
-        <a href="#diabetes-shop">Diabetes</a>
-        <a href="#hypertension-shop">Hypertension</a>
-        <a href="#cardio-shop">Cardiovascular & stroke risk</a>
-        <a href="#chronic-shop">Chronic-disease monitoring</a>
-        <a href="#respiratory-shop">Respiratory</a>
-        <a href="#sleep-shop">Sleep</a>
+    <section class="shell shop-need-launch reveal" aria-labelledby="shop-need-title">
+      <div class="shop-launch-heading">
+        <span class="eyebrow">SHOP BY HEALTH NEED</span>
+        <h2 id="shop-need-title">Start with what you want to manage.</h2>
       </div>
-    </nav>
-
-    <section id="shop-by-need" class="shell shop-need-section">
-      <div class="section-head">
-        <div><span class="kicker">Shop by health need</span><h2>Start with what you want to monitor.</h2></div>
-        <p>Choose a health goal first, then compare the home devices that support that routine.</p>
-      </div>
-      <div class="shop-need-grid">
-        <a href="#diabetes-shop" class="shop-need-card">
-          <span>01</span><strong>Diabetes</strong><p>Continuous glucose monitoring and everyday diabetes support.</p><b>Explore →</b>
-        </a>
-        <a href="#hypertension-shop" class="shop-need-card">
-          <span>02</span><strong>Hypertension</strong><p>Upper-arm blood-pressure monitoring for regular home checks.</p><b>Explore →</b>
-        </a>
-        <a href="#cardio-shop" class="shop-need-card">
-          <span>03</span><strong>Heart & stroke-risk awareness</strong><p>Blood pressure, pulse and oxygen saturation for trend awareness.</p><b>Explore →</b>
-        </a>
-        <a href="#chronic-shop" class="shop-need-card">
-          <span>04</span><strong>Chronic-disease monitoring</strong><p>A practical home toolkit for regular multi-signal monitoring.</p><b>Explore →</b>
-        </a>
+      <div class="shop-need-launch-grid">
+        <button type="button" data-category-link="diabetes"><span>01</span><strong>Diabetes</strong><small>CGM & glucose monitoring</small></button>
+        <button type="button" data-category-link="blood-pressure"><span>02</span><strong>Hypertension</strong><small>Blood-pressure monitoring</small></button>
+        <button type="button" data-category-link="heart"><span>03</span><strong>Cardiovascular health</strong><small>Pulse & oxygen checks</small></button>
+        <button type="button" data-category-link="home-equipment"><span>04</span><strong>Respiratory care</strong><small>Oxygen & nebulisation</small></button>
+        <button type="button" data-category-link="home-equipment"><span>05</span><strong>Everyday monitoring</strong><small>Temperature & home vitals</small></button>
       </div>
     </section>
 
-    <section id="featured-products" class="shop-product-zone">
-      <div class="shell">
-        <div class="section-head">
-          <div><span class="kicker">Featured devices</span><h2>Clean, practical home-health technology.</h2></div>
-          <p>Product photography is presented on a clean isolated surface so the device remains the focus.</p>
+    <section id="cgm-shop" class="shop-cgm-launch reveal">
+      <div class="shell shop-cgm-launch-grid">
+        <div class="shop-cgm-launch-copy">
+          <span class="eyebrow">FLAGSHIP CATEGORY · CONTINUOUS GLUCOSE MONITORING</span>
+          <h2>Continuous glucose monitoring, made simpler.</h2>
+          <p>See glucose direction and patterns throughout the day so you can better understand changes around meals, activity, sleep and normal daily routines.</p>
+          <ul>
+            <li>Continuous trend visibility</li>
+            <li>Designed for everyday home use</li>
+            <li>Phone compatibility confirmed before order</li>
+            <li>Setup support available</li>
+          </ul>
+          <div class="launch-product-meta">
+            <span><b>Availability</b> Check current stock</span>
+            <span><b>Pricing</b> Request current price</span>
+          </div>
+          <button class="btn btn-light request-product" type="button" data-product="Yuwell Anytime 5Pro CGM">Request CGM price <span>↗</span></button>
         </div>
 
-        <section id="diabetes-shop" class="shop-section shop-category-block">
-          <div class="shop-section-head">
-            <div><span class="kicker">Diabetes</span><h2>Continuous glucose monitoring.</h2></div>
-            <p>See glucose direction and patterns across the day instead of relying only on isolated readings.</p>
-          </div>
-          <div class="store-grid">
-            <article class="store-card store-card-featured">
-              <div class="store-card-media product-cutout-surface">
-                <span class="store-badge">CGM</span>
-                <img src="images/products/yuwell-anytime-5pro.webp" alt="Yuwell Anytime 5Pro CGM" width="700" height="700" loading="lazy" decoding="async" />
-              </div>
-              <div class="store-card-body">
-                <small>Yuwell · Continuous glucose monitoring</small>
-                <h3>Yuwell Anytime 5Pro CGM</h3>
-                <p>Integrated sensor and transmitter for continuous glucose insight in everyday diabetes management.</p>
-                <ul class="store-benefits"><li>Continuous trend visibility</li><li>Designed for home use</li><li>Ask about phone compatibility and setup</li></ul>
-                <div class="store-price"><div><strong>Price on request</strong><br><span>Confirm current South African stock and sensor pricing</span></div></div>
-                <a class="btn btn-accent" href="index.html#contact">Enquire about CGM ↗</a>
-              </div>
-            </article>
-          </div>
-        </section>
+        <div class="shop-cgm-launch-product">
+          <img src="images/products/yuwell-anytime-5pro.webp" alt="Yuwell Anytime 5Pro CGM product" width="760" height="760" loading="lazy" decoding="async" />
+          <span>Yuwell · Anytime 5Pro</span>
+        </div>
 
+        <figure class="shop-cgm-launch-life">
+          <img src="images/lifestyle/cgm-screen-customer.png" alt="Customer wearing a continuous glucose monitor and viewing glucose trends on a smartphone" width="1000" height="1200" loading="lazy" decoding="async" />
+        </figure>
+      </div>
+      <div class="shell shop-cgm-launch-flow"><span>Sensor</span><b>→</b><span>Phone</span><b>→</b><span>Glucose trends</span><b>→</b><span>CareGrid</span><b>→</b><span>Care team</span></div>
+      <p class="shell shop-clinical-note">CGM supports monitoring and trend awareness. It does not replace diagnosis, emergency assessment or professional medical advice.</p>
+    </section>
 
-        <section class="shop-cgm-context">
-          <div class="shop-cgm-context-copy">
-            <span class="kicker">CGM flagship experience</span>
-            <h2>Your glucose story, throughout the day.</h2>
-            <p>CGM can help show direction and patterns around meals, exercise and overnight periods, giving you richer context for everyday diabetes management and care conversations.</p>
-            <div class="cgm-mini-flow"><span>Sensor</span><b>→</b><span>Phone</span><b>→</b><span>Trends</span><b>→</b><span>CareGrid</span></div>
-          </div>
-          <figure><img src="images/catalog/cgm-drive.jpg" alt="Person wearing and using continuous glucose monitoring" loading="lazy" decoding="async" /></figure>
-          <figure><img src="images/catalog/yuwell-anytime-app.png" alt="Yuwell Anytime glucose trend app" loading="lazy" decoding="async" /></figure>
-        </section>
+    <section id="products" class="shell shop-products-launch reveal">
+      <div class="shop-launch-heading shop-launch-heading-row">
+        <div><span class="eyebrow">SHOP DEVICES</span><h2>Essential home-health equipment.</h2></div>
+        <p>Only verified products already in the HomeClinicStore catalogue are shown here. Current stock and selling price are confirmed before order.</p>
+      </div>
 
-        <section class="shop-inline-lifestyle">
-          <figure><img src="https://images.pexels.com/photos/7446757/pexels-photo-7446757.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Family supporting home healthcare monitoring" loading="lazy" decoding="async" /></figure>
-          <div><span class="kicker">Home monitoring</span><h2>Make regular checks part of everyday life.</h2><p>Use home devices consistently, keep a record of trends and share meaningful changes with a healthcare professional when appropriate.</p></div>
-        </section>
+      <div class="shop-launch-tools">
+        <label class="shop-launch-search">
+          <span>Search products</span>
+          <input id="shop-search" type="search" placeholder="Search CGM, blood pressure, oxygen..." />
+        </label>
+        <div class="shop-launch-filters" role="group" aria-label="Filter products">
+          <button type="button" data-shop-filter="all" aria-pressed="true">All</button>
+          <button type="button" data-shop-filter="diabetes" aria-pressed="false">CGM & diabetes</button>
+          <button type="button" data-shop-filter="blood-pressure" aria-pressed="false">Blood pressure</button>
+          <button type="button" data-shop-filter="heart" aria-pressed="false">Heart & oxygen</button>
+          <button type="button" data-shop-filter="home-equipment" aria-pressed="false">Home equipment</button>
+          <button type="button" id="clear-shop-filter">Clear</button>
+        </div>
+      </div>
+      <p id="shop-result-count" class="shop-launch-result" role="status">6 products</p>
 
-        <section id="hypertension-shop" class="shop-section shop-category-block">
-          <div class="shop-section-head">
-            <div><span class="kicker">Hypertension</span><h2>Reliable blood-pressure routines.</h2></div>
-            <p>Regular upper-arm blood-pressure checks can help make long-term trends easier to see and discuss.</p>
+      <div class="shop-launch-grid">
+        <article class="shop-launch-card" data-shop-category="diabetes" data-shop-search="yuwell anytime 5pro cgm continuous glucose diabetes">
+          <div class="shop-launch-media">
+            <span>CGM</span>
+            <img src="images/products/yuwell-anytime-5pro.webp" alt="Yuwell Anytime 5Pro CGM" width="640" height="640" loading="lazy" decoding="async" />
           </div>
-          <div class="store-grid">
-            <article class="store-card">
-              <div class="store-card-media product-cutout-surface">
-                <span class="store-badge">Blood pressure</span>
-                <img src="images/products/yuwell-ye660e.webp" alt="Yuwell YE660E upper-arm blood-pressure monitor" width="700" height="700" loading="lazy" decoding="async" />
-              </div>
-              <div class="store-card-body">
-                <small>Yuwell · Hypertension monitoring</small>
-                <h3>Yuwell YE660E BP Monitor</h3>
-                <p>Automatic upper-arm blood-pressure monitoring for routine checks at home.</p>
-                <ul class="store-benefits"><li>Upper-arm measurement</li><li>Home monitoring workflow</li><li>Confirm supplied cuff size before ordering</li></ul>
-                <div class="store-price"><div><strong>Price on request</strong><br><span>Current stock and supplied cuff to be confirmed</span></div></div>
-                <a class="btn btn-accent" href="index.html#contact">Enquire now ↗</a>
-              </div>
-            </article>
-            <article class="store-card">
-              <div class="store-card-media product-cutout-surface">
-                <span class="store-badge">Temperature</span>
-                <img src="images/products/yuwell-yt1.webp" alt="Yuwell YT-1 infrared thermometer" width="700" height="700" loading="lazy" decoding="async" />
-              </div>
-              <div class="store-card-body">
-                <small>Yuwell · Home vitals</small>
-                <h3>Yuwell YT-1 Thermometer</h3>
-                <p>Infrared temperature monitoring for practical home-care checks.</p>
-                <ul class="store-benefits"><li>Quick temperature checks</li><li>Useful in a home monitoring kit</li><li>Confirm exact supplied model</li></ul>
-                <div class="store-price"><div><strong>Price on request</strong><br><span>Confirm current South African stock</span></div></div>
-                <a class="btn btn-accent" href="index.html#contact">Enquire now ↗</a>
-              </div>
-            </article>
+          <div class="shop-launch-body">
+            <small>Yuwell · Continuous glucose monitoring</small>
+            <h3>Yuwell Anytime 5Pro CGM</h3>
+            <p>Continuous glucose trend visibility for everyday diabetes management.</p>
+            <div class="shop-card-status"><span>Price on request</span><b>Check availability</b></div>
+            <button class="shop-launch-cta request-product" type="button" data-product="Yuwell Anytime 5Pro CGM">Request price <span>↗</span></button>
           </div>
-        </section>
+        </article>
 
-        <section id="cardio-shop" class="shop-section shop-category-block">
-          <div class="shop-section-head">
-            <div><span class="kicker">Cardiovascular & stroke-risk awareness</span><h2>Watch trends, not fear.</h2></div>
-            <p>Home devices do not diagnose or prevent stroke. They can support routine awareness of blood pressure, pulse and oxygen saturation that may be useful in clinical conversations.</p>
+        <article class="shop-launch-card" data-shop-category="blood-pressure" data-shop-search="yuwell ye660e blood pressure hypertension upper arm">
+          <div class="shop-launch-media">
+            <span>Blood pressure</span>
+            <img src="images/products/yuwell-ye660e.webp" alt="Yuwell YE660E upper-arm blood-pressure monitor" width="640" height="640" loading="lazy" decoding="async" />
           </div>
-          <div class="store-grid">
-            <article class="store-card">
-              <div class="store-card-media product-cutout-surface">
-                <span class="store-badge">Pulse & oxygen</span>
-                <img src="images/products/yuwell-pulse-oximeter.webp" alt="Yuwell fingertip pulse oximeter" width="700" height="700" loading="lazy" decoding="async" />
-              </div>
-              <div class="store-card-body">
-                <small>Yuwell · Pulse & oxygen</small>
-                <h3>Yuwell Pulse Oximeter</h3>
-                <p>Fingertip spot checks of oxygen saturation and pulse rate.</p>
-                <ul class="store-benefits"><li>SpO₂ spot checks</li><li>Pulse-rate display</li><li>Compact home monitoring device</li></ul>
-                <div class="store-price"><div><strong>R799</strong><br><span>Retail reference · confirm current selling price</span></div></div>
-                <a class="btn btn-accent" href="index.html#contact">Enquire now ↗</a>
-              </div>
-            </article>
-            <article class="store-card store-card-care-bundle">
-              <div class="store-card-media store-care-visual">
-                <div class="care-kit-icon">BP + SpO₂ + Temp</div>
-              </div>
-              <div class="store-card-body">
-                <small>Home monitoring bundle</small>
-                <h3>Cardiovascular Home Check Kit</h3>
-                <p>A practical enquiry bundle combining blood pressure, pulse/oxygen and temperature monitoring.</p>
-                <ul class="store-benefits"><li>Supports regular home routines</li><li>Useful for trend recording</li><li>Final device selection confirmed at quote stage</li></ul>
-                <div class="store-price"><div><strong>Build a quote</strong><br><span>Bundle price depends on selected models</span></div></div>
-                <a class="btn btn-accent" href="index.html#contact">Build enquiry ↗</a>
-              </div>
-            </article>
+          <div class="shop-launch-body">
+            <small>Yuwell · Hypertension monitoring</small>
+            <h3>Yuwell YE660E BP Monitor</h3>
+            <p>Automatic upper-arm blood-pressure monitoring for regular home checks.</p>
+            <div class="shop-card-status"><span>Price on request</span><b>Check cuff & stock</b></div>
+            <button class="shop-launch-cta request-product" type="button" data-product="Yuwell YE660E BP Monitor">Request price <span>↗</span></button>
           </div>
-        </section>
+        </article>
 
-        <section id="chronic-shop" class="shop-section shop-category-block">
-          <div class="shop-section-head">
-            <div><span class="kicker">Chronic-disease monitoring</span><h2>A home toolkit for long-term care.</h2></div>
-            <p>Bring diabetes, blood pressure, pulse/oxygen and temperature monitoring into one practical home routine. CareGrid integration remains subject to confirmed device compatibility.</p>
+        <article class="shop-launch-card" data-shop-category="heart" data-shop-search="yuwell pulse oximeter oxygen saturation spo2 pulse heart">
+          <div class="shop-launch-media">
+            <span>Pulse & oxygen</span>
+            <img class="shop-product-isolated" src="images/products/yuwell-pulse-oximeter.webp" alt="Yuwell fingertip pulse oximeter" width="640" height="640" loading="lazy" decoding="async" />
           </div>
-          <div class="chronic-monitor-grid">
-            <article><strong>Diabetes</strong><span>CGM trends</span></article>
-            <article><strong>Hypertension</strong><span>Blood-pressure checks</span></article>
-            <article><strong>Cardiovascular</strong><span>Pulse & oxygen spot checks</span></article>
-            <article><strong>General home care</strong><span>Temperature monitoring</span></article>
+          <div class="shop-launch-body">
+            <small>Yuwell · Pulse & oxygen</small>
+            <h3>Yuwell Pulse Oximeter</h3>
+            <p>Compact fingertip spot checks of oxygen saturation and pulse rate.</p>
+            <div class="shop-card-status"><span>Price on request</span><b>Check availability</b></div>
+            <button class="shop-launch-cta request-product" type="button" data-product="Yuwell Pulse Oximeter">Request price <span>↗</span></button>
           </div>
-          <a class="btn btn-dark chronic-cta" href="index.html#caregrid">See CareGrid monitoring concept ↗</a>
-        </section>
+        </article>
 
-        <section id="respiratory-shop" class="shop-section shop-category-block">
-          <div class="shop-section-head">
-            <div><span class="kicker">Respiratory care</span><h2>Home respiratory support.</h2></div>
-            <p>Equipment for prescribed oxygen and nebulisation care plans. Confirm the exact model and clinical requirements before purchase.</p>
+        <article class="shop-launch-card" data-shop-category="home-equipment" data-shop-search="yuwell 10l oxygen concentrator respiratory home oxygen">
+          <div class="shop-launch-media">
+            <span>Respiratory</span>
+            <img src="images/products/yuwell-10l-oxygen.webp" alt="Yuwell 10 litre oxygen concentrator" width="640" height="640" loading="lazy" decoding="async" />
           </div>
-          <div class="store-grid">
-            <article class="store-card">
-              <div class="store-card-media product-cutout-surface">
-                <span class="store-badge">Nebulisation</span>
-                <img src="images/products/yuwell-403t.webp" alt="Yuwell 403T compressor nebuliser" width="700" height="700" loading="lazy" decoding="async" />
-              </div>
-              <div class="store-card-body">
-                <small>Yuwell · Respiratory care</small>
-                <h3>Yuwell 403T Nebuliser</h3>
-                <p>Compressor nebuliser for prescribed inhalation treatment.</p>
-                <ul class="store-benefits"><li>Home respiratory support</li><li>Confirm supplied accessories</li><li>Use according to prescribed treatment</li></ul>
-                <div class="store-price"><div><strong>R846</strong><br><span>Retail reference · confirm current selling price</span></div></div>
-                <a class="btn btn-accent" href="index.html#contact">Enquire now ↗</a>
-              </div>
-            </article>
-            <article class="store-card">
-              <div class="store-card-media product-cutout-surface">
-                <span class="store-badge">Oxygen therapy</span>
-                <img src="images/products/yuwell-10l-oxygen.webp" alt="Yuwell 10 litre oxygen concentrator" width="700" height="700" loading="lazy" decoding="async" />
-              </div>
-              <div class="store-card-body">
-                <small>Yuwell · Oxygen therapy</small>
-                <h3>Yuwell 10L Oxygen Concentrator</h3>
-                <p>Higher-flow home oxygen equipment for use within an appropriate prescribed care plan.</p>
-                <ul class="store-benefits"><li>High-flow home oxygen category</li><li>Confirm required flow with clinician</li><li>Setup support available on enquiry</li></ul>
-                <div class="store-price"><div><strong>R19 550</strong><br><span>Retail reference · confirm current selling price</span></div></div>
-                <a class="btn btn-accent" href="index.html#contact">Enquire now ↗</a>
-              </div>
-            </article>
+          <div class="shop-launch-body">
+            <small>Yuwell · Oxygen therapy</small>
+            <h3>Yuwell 10L Oxygen Concentrator</h3>
+            <p>Home oxygen equipment for use within an appropriate prescribed care plan.</p>
+            <div class="shop-card-status"><span>Price on request</span><b>Clinical requirement check</b></div>
+            <button class="shop-launch-cta request-product" type="button" data-product="Yuwell 10L Oxygen Concentrator">Check availability <span>↗</span></button>
           </div>
-        </section>
+        </article>
 
-        <section id="sleep-shop" class="shop-section shop-category-block">
-          <div class="shop-section-head">
-            <div><span class="kicker">Sleep therapy</span><h2>CPAP and breathing support.</h2></div>
-            <p>Yuwell sleep-therapy systems and compatible accessories are available by enquiry. Exact models, masks and settings should match the prescribed therapy plan.</p>
+        <article class="shop-launch-card" data-shop-category="home-equipment" data-shop-search="yuwell 403t nebuliser nebulizer respiratory compressor">
+          <div class="shop-launch-media">
+            <span>Respiratory</span>
+            <img src="images/products/yuwell-403t.webp" alt="Yuwell 403T compressor nebuliser" width="640" height="640" loading="lazy" decoding="async" />
           </div>
-          <div class="shop-enquiry-panel">
-            <div><strong>Looking for CPAP, Auto-CPAP, masks or filters?</strong><p>Tell us the model or therapy requirement and we will confirm available Yuwell options, pricing and compatible accessories.</p></div>
-            <a class="btn btn-accent" href="index.html#contact">Request sleep-therapy quote ↗</a>
+          <div class="shop-launch-body">
+            <small>Yuwell · Respiratory care</small>
+            <h3>Yuwell 403T Nebuliser</h3>
+            <p>Compressor nebuliser equipment for prescribed inhalation therapy at home.</p>
+            <div class="shop-card-status"><span>Price on request</span><b>Check accessories</b></div>
+            <button class="shop-launch-cta request-product" type="button" data-product="Yuwell 403T Nebuliser">Request price <span>↗</span></button>
           </div>
-        </section>
+        </article>
 
-        <section id="more-home-equipment" class="shop-section shop-category-block">
-          <div class="shop-section-head">
-            <div><span class="kicker">More home medical equipment</span><h2>Build a complete home-health setup.</h2></div>
-            <p>Additional products sourced from the HomeClinicStore product library. Exact specifications, stock and pricing are confirmed on enquiry.</p>
+        <article class="shop-launch-card" data-shop-category="home-equipment" data-shop-search="yuwell yt1 thermometer infrared temperature home monitoring">
+          <div class="shop-launch-media">
+            <span>Temperature</span>
+            <img src="images/products/yuwell-yt1.webp" alt="Yuwell YT-1 infrared thermometer" width="640" height="640" loading="lazy" decoding="async" />
           </div>
-          <div class="store-grid store-grid-catalog">
-            <article class="store-card"><div class="store-card-media product-cutout-surface"><span class="store-badge">Blood pressure</span><img src="images/catalog/bp-z5.jpg" alt="Z5 blood pressure monitor with cuff and app" loading="lazy" decoding="async" /></div><div class="store-card-body"><small>Connected blood-pressure monitoring</small><h3>Z5 Blood Pressure Monitor</h3><p>Home upper-arm blood-pressure monitoring with companion-app context shown in the HCS product library.</p><div class="store-price"><div><strong>Price on request</strong><br><span>Confirm model and compatibility</span></div></div><a class="btn btn-accent" href="index.html#contact">Request price ↗</a></div></article>
-            <article class="store-card"><div class="store-card-media product-cutout-surface"><span class="store-badge">Pulse & oxygen</span><img src="images/catalog/pulse-oximeter-sb210.webp" alt="SB210 pulse oximeter" loading="lazy" decoding="async" /></div><div class="store-card-body"><small>Pulse oximetry</small><h3>SB210 Pulse Oximeter</h3><p>Compact fingertip SpO₂ and pulse monitoring for home spot checks.</p><div class="store-price"><div><strong>Price on request</strong><br><span>Confirm current stock</span></div></div><a class="btn btn-accent" href="index.html#contact">Request price ↗</a></div></article>
-            <article class="store-card"><div class="store-card-media product-cutout-surface"><span class="store-badge">Temperature</span><img src="images/catalog/thermometer-hc700bt.webp" alt="HC700BT digital thermometer" loading="lazy" decoding="async" /></div><div class="store-card-body"><small>Temperature monitoring</small><h3>HC700BT Thermometer</h3><p>Digital temperature monitoring from the HCS home-health product range.</p><div class="store-price"><div><strong>Price on request</strong><br><span>Confirm features and stock</span></div></div><a class="btn btn-accent" href="index.html#contact">Request price ↗</a></div></article>
-            <article class="store-card"><div class="store-card-media product-cutout-surface"><span class="store-badge">Weight</span><img src="images/catalog/scale-wb101.webp" alt="WB101 home weight scale" loading="lazy" decoding="async" /></div><div class="store-card-body"><small>Weight monitoring</small><h3>WB101 Home Scale</h3><p>Home weight monitoring for longitudinal chronic-care tracking.</p><div class="store-price"><div><strong>Price on request</strong><br><span>Confirm current stock</span></div></div><a class="btn btn-accent" href="index.html#contact">Request price ↗</a></div></article>
-            <article class="store-card"><div class="store-card-media product-cutout-surface"><span class="store-badge">ECG</span><img src="images/catalog/portable-ecg.jpg" alt="Portable ECG monitor" loading="lazy" decoding="async" /></div><div class="store-card-body"><small>Cardiovascular monitoring</small><h3>Portable ECG Monitor</h3><p>Portable ECG equipment from the HCS product library. Exact model and intended use require confirmation.</p><div class="store-price"><div><strong>Price on request</strong><br><span>Confirm exact model before ordering</span></div></div><a class="btn btn-accent" href="index.html#contact">Ask about ECG ↗</a></div></article>
-            <article class="store-card"><div class="store-card-media product-cutout-surface"><span class="store-badge">Wearable monitoring</span><img src="images/catalog/bp-watch.png" alt="Blood pressure monitoring watch from HCS product library" loading="lazy" decoding="async" /></div><div class="store-card-body"><small>Wearable cardiovascular monitoring</small><h3>Blood Pressure Monitoring Watch</h3><p>Wearable monitoring option for everyday cardiovascular awareness. Confirm model, validation and intended use before purchase.</p><div class="store-price"><div><strong>Price on request</strong><br><span>Model verification required</span></div></div><a class="btn btn-accent" href="index.html#contact">Ask about wearable monitoring ↗</a></div></article>
-            <article class="store-card"><div class="store-card-media product-cutout-surface"><span class="store-badge">Blood glucose</span><img src="images/catalog/glucometer.webp" alt="Rossmax blood glucose meter" loading="lazy" decoding="async" /></div><div class="store-card-body"><small>Diabetes monitoring</small><h3>Blood Glucose Meter</h3><p>Finger-stick glucose monitoring for home diabetes management.</p><div class="store-price"><div><strong>Price on request</strong><br><span>Confirm meter and strip compatibility</span></div></div><a class="btn btn-accent" href="index.html#contact">Request price ↗</a></div></article>
-            <article class="store-card"><div class="store-card-media product-cutout-surface"><span class="store-badge">Consumables</span><img src="images/catalog/glucose-strips.jpg" alt="Blood glucose meter test strips" loading="lazy" decoding="async" /></div><div class="store-card-body"><small>Diabetes consumables</small><h3>Glucose Test Strips</h3><p>Replacement glucose test strips. Compatibility must match the selected meter.</p><div class="store-price"><div><strong>Price on request</strong><br><span>Confirm compatible meter</span></div></div><a class="btn btn-accent" href="index.html#contact">Request strips ↗</a></div></article>
-            <article class="store-card"><div class="store-card-media product-cutout-surface"><span class="store-badge">Sleep therapy</span><img src="images/catalog/cpap.png" alt="Home CPAP system" loading="lazy" decoding="async" /></div><div class="store-card-body"><small>Sleep therapy</small><h3>Home CPAP System</h3><p>CPAP equipment for prescribed sleep-apnoea therapy. Exact system, mask and settings require confirmation.</p><div class="store-price"><div><strong>Price on request</strong><br><span>Prescription/therapy requirements may apply</span></div></div><a class="btn btn-accent" href="index.html#contact">Request CPAP quote ↗</a></div></article>
-            <article class="store-card"><div class="store-card-media product-cutout-surface"><span class="store-badge">Maternal home care</span><img src="images/catalog/baby-doppler.jpg" alt="Home fetal Doppler monitor" loading="lazy" decoding="async" /></div><div class="store-card-body"><small>Maternal monitoring</small><h3>Fetal Doppler</h3><p>Home fetal-heart sound monitoring equipment from the HCS product library. Use only according to product guidance and clinical advice.</p><div class="store-price"><div><strong>Price on request</strong><br><span>Confirm exact model and intended use</span></div></div><a class="btn btn-accent" href="index.html#contact">Request price ↗</a></div></article>
-            <article class="store-card"><div class="store-card-media product-cutout-surface"><span class="store-badge">Infant care</span><img src="images/catalog/baby-scale.png" alt="Baby weighing scale" loading="lazy" decoding="async" /></div><div class="store-card-body"><small>Infant home care</small><h3>Baby Scale</h3><p>Infant weighing equipment for home and care environments.</p><div class="store-price"><div><strong>Price on request</strong><br><span>Confirm current stock</span></div></div><a class="btn btn-accent" href="index.html#contact">Request price ↗</a></div></article>
-            <article class="store-card"><div class="store-card-media product-cutout-surface"><span class="store-badge">Clinical accessory</span><img src="images/catalog/stethoscope.webp" alt="Dual-head stethoscope" loading="lazy" decoding="async" /></div><div class="store-card-body"><small>Home & clinical assessment</small><h3>Dual-Head Stethoscope</h3><p>General auscultation accessory from the HCS product library.</p><div class="store-price"><div><strong>Price on request</strong><br><span>Confirm current model</span></div></div><a class="btn btn-accent" href="index.html#contact">Request price ↗</a></div></article>
+          <div class="shop-launch-body">
+            <small>Yuwell · Everyday monitoring</small>
+            <h3>Yuwell YT-1 Thermometer</h3>
+            <p>Infrared temperature monitoring for practical home-care checks.</p>
+            <div class="shop-card-status"><span>Price on request</span><b>Check availability</b></div>
+            <button class="shop-launch-cta request-product" type="button" data-product="Yuwell YT-1 Thermometer">Request price <span>↗</span></button>
           </div>
-        </section>
+        </article>
+      </div>
 
-        <p class="price-note">Prices shown are retail references from the current catalogue build and may change. Final HomeClinicStore selling price, stock, delivery, warranty, exact model and compatibility must be confirmed in the quote before purchase.</p>
+      <p id="shop-empty" class="shop-empty" hidden>No products match your search. Clear the filters and try again.</p>
+    </section>
+
+    <section class="shop-caregrid-bridge reveal">
+      <div class="shell shop-caregrid-bridge-grid">
+        <div><span class="eyebrow">FROM MEASUREMENT TO MONITORING</span><h2>Home readings can become part of a bigger care picture.</h2><p>For supported workflows, CareGrid is designed to bring patient readings, trends, alerts and care-plan activity into one remote monitoring workspace.</p><a class="text-link" href="index.html#caregrid">Explore CareGrid →</a></div>
+        <div class="shop-caregrid-flow"><span>Device</span><b>→</b><span>Patient</span><b>→</b><span>CareGrid</span><b>→</b><span>Trend</span><b>→</b><span>Care team</span></div>
       </div>
     </section>
 
-    <section class="shop-final-cta">
-      <div class="shell shop-final-grid">
-        <div><span class="eyebrow">NEED HELP CHOOSING?</span><h2>Build a home-monitoring setup around your actual needs.</h2><p>Tell us what you need to monitor and HomeClinicStore can help identify appropriate device categories, availability and support options.</p></div>
-        <a class="btn btn-light" href="index.html#contact">Start an enquiry ↗</a>
+    <section id="support" class="shell shop-support-launch reveal">
+      <div class="shop-launch-heading shop-launch-heading-row">
+        <div><span class="eyebrow">HOME MEDICAL EQUIPMENT SUPPORT</span><h2>Support after the product arrives.</h2></div>
+        <p>Biomedical engineering services are focused specifically on supported home medical equipment and managed through an online workflow.</p>
+      </div>
+      <div class="shop-support-grid">
+        <article><span>01</span><strong>Setup support</strong><p>Guidance for supported home devices and accessories.</p></article>
+        <article><span>02</span><strong>Inspection & testing</strong><p>Functional assessment where applicable to the device.</p></article>
+        <article><span>03</span><strong>Calibration & maintenance</strong><p>Planned technical support where the equipment requires it.</p></article>
+        <article><span>04</span><strong>Repairs & logistics</strong><p>Assessment, service coordination and return logistics for supported items.</p></article>
+      </div>
+      <div class="shop-service-flow"><span>Book online</span><b>→</b><span>Arrange logistics</span><b>→</b><span>Service</span><b>→</b><span>Track</span><b>→</b><span>Receive documentation</span></div>
+    </section>
+
+    <section class="shell shop-policy-launch reveal" aria-label="Shopping information">
+      <article><span class="eyebrow">DELIVERY</span><h3>Delivery confirmed with your order.</h3><p>Availability, destination and delivery timing are confirmed before an order is finalised.</p></article>
+      <article><span class="eyebrow">WARRANTY</span><h3>Manufacturer and product terms apply.</h3><p>Warranty coverage is confirmed for the exact supplied model before purchase.</p></article>
+      <article><span class="eyebrow">RETURNS</span><h3>Clear terms before purchase.</h3><p>Applicable return conditions are confirmed with the order, especially for opened or clinically sensitive products.</p></article>
+    </section>
+
+    <section id="request" class="shop-request-launch reveal">
+      <div class="shell shop-request-grid">
+        <div>
+          <span class="eyebrow">PRICE & AVAILABILITY REQUEST</span>
+          <h2>Tell us what you need.</h2>
+          <p>Select a product above or enter it below. The form prepares a professional request you can send using your device’s share options. No enquiry file is downloaded.</p>
+        </div>
+        <form id="shop-request-form" class="shop-request-form">
+          <label>Product<input id="request-product" name="product" required placeholder="e.g. Yuwell Anytime 5Pro CGM" /></label>
+          <div class="shop-request-two">
+            <label>Name<input id="request-name" name="name" required autocomplete="name" /></label>
+            <label>Contact detail<input id="request-contact" name="contact" required placeholder="Email or phone" /></label>
+          </div>
+          <label>What do you need?
+            <select id="request-type" name="type">
+              <option>Current price</option>
+              <option>Stock availability</option>
+              <option>Product compatibility</option>
+              <option>Setup support</option>
+              <option>Biomedical service support</option>
+            </select>
+          </label>
+          <label>Notes<textarea id="request-notes" name="notes" rows="4" placeholder="Optional model, delivery area or question"></textarea></label>
+          <button class="btn btn-accent" type="submit">Prepare request <span>↗</span></button>
+          <p id="request-status" role="status"></p>
+        </form>
       </div>
     </section>
   </main>
 
-  <footer class="footer shell">
-    <div class="brand"><img class="brand-logo" src="hcs-logo.png" alt="HomeClinicStore" width="920" height="180" /></div>
-    <p>Modern healthcare at home.</p>
-    <div><a href="index.html">Home</a><a href="shop.html">Shop</a><a href="index.html#caregrid">CareGrid</a><a href="index.html#services">Services</a></div>
-    <small>© 2026 HomeClinicStore. Product information does not replace professional medical advice. Medical devices should be used according to their instructions and applicable clinical guidance.</small>
+  <footer class="minimal-footer shop-launch-footer">
+    <div class="shell">
+      <a class="brand footer-brand" href="index.html"><img src="hcs-logo.png" alt="HomeClinicStore" width="920" height="180" /></a>
+      <p>Connected home health, chronic-condition monitoring and online support for home medical equipment.</p>
+      <div><a href="#products">Shop</a><a href="#cgm-shop">CGM</a><a href="index.html#caregrid">CareGrid</a><a href="#support">Support</a></div>
+    </div>
   </footer>
 </body>
 </html>
