@@ -1208,3 +1208,18 @@ dialog #save-status {
     transition: none !important;
   }
 }
+
+/* Real product photography: preserve device proportions and readable labels. */
+.product-art.product-photo-surface { background: #fff; border: 1px solid var(--line); }
+.product-photo { width: calc(100% - 40px); height: 190px; object-fit: contain; margin-top: 12px; transition: transform .35s ease; }
+.product:hover .product-photo { transform: scale(1.04); }
+.product-photo-surface .pill { font-size: 12px; background: #ffffffed; padding: 4px 7px; border-radius: 6px; z-index: 1; }
+.product-photo-surface .art-caption { font-size: 11px; }
+.detail-photo { display: block; width: 100%; height: 220px; object-fit: contain; margin: 20px 0; }
+@media (max-width: 900px) { .product-photo { height: 160px; } }
+@media (prefers-reduced-motion: reduce) { .product:hover .product-photo { transform: none; } }
+
+.product-photo[src*="ye660e"], .product-photo[src*="403t"], .product-photo[src*="yt1"] { transform: scale(1.75); }
+.product:hover .product-photo[src*="ye660e"], .product:hover .product-photo[src*="403t"], .product:hover .product-photo[src*="yt1"] { transform: scale(1.8); }
+.product-photo-surface .art-caption { z-index: 1; background: #fffffff2; padding: 3px 5px; border-radius: 4px; }
+@media (prefers-reduced-motion: reduce) { .product:hover .product-photo[src*="ye660e"], .product:hover .product-photo[src*="403t"], .product:hover .product-photo[src*="yt1"] { transform: scale(1.75); } }

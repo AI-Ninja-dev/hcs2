@@ -19,11 +19,11 @@ The production build is written to `dist/`.
 
 ## Storefront redesign
 
-The storefront uses a warm ivory backgrounds, soft sage surfaces, medical blue accents and responsive layouts inspired by Loydtech. The original HomeClinicStore logo is reused from `AI-Ninja-dev/homeclinicstore/public/hcs-logo.png` without alteration. It retains the original section anchors and three catalogue entries, with no framework or runtime dependencies added.
+The storefront uses a warm ivory backgrounds, soft sage surfaces, medical blue accents and responsive layouts inspired by Loydtech. The original HomeClinicStore logo is reused from `AI-Ninja-dev/homeclinicstore/public/hcs-logo.png` without alteration. It retains the original section anchors and catalogue enquiry workflow, with no framework or runtime dependencies added.
 
 Product search and category filters work together. Device details open in keyboard-accessible dialogs. Visitors can add devices to a session-only enquiry list, remove them, and download a text enquiry draft. If browser storage is unavailable, the list works in memory until the page reloads. No payment, order processing or message sending is implemented.
 
-Device illustrations and health dashboards are explicitly conceptual. Before enabling sales, supply verified product photographs, exact model specifications, prices, stock, compatibility, delivery and return terms, and a verified business contact channel. The site does not collect contact details or patient data. Fonts load from Google Fonts with local system-font fallbacks.
+The catalogue includes six real Yuwell product photographs with matching product names; see [Image sources](docs/PRODUCT-IMAGE-SOURCES.md). Health dashboard examples remain conceptual. Before enabling sales, confirm local supply, specifications, prices, stock, compatibility, delivery and return terms, and a verified business contact channel. The site does not collect contact details or patient data. Fonts load from Google Fonts with local system-font fallbacks.
 
 ### Verification
 

@@ -39,21 +39,42 @@ if ("IntersectionObserver" in window) {
     .forEach((item) => observer.observe(item));
 }
 const products = {
-  diabetes: {
-    name: "Anytime 5 Pro CGM",
-    description:
-      "Explore continuous glucose monitoring for home use. Ask about the exact sensor model, wear duration, supported phones and any app requirements.",
+  "diabetes": {
+    "name": "Yuwell Anytime 5Pro CGM",
+    "description": "Yuwell Anytime 5Pro continuous glucose monitoring. Ask about sensor availability, supported phones and setup support.",
+    "image": "images/products/yuwell-anytime-5pro.webp",
+    "alt": "Yuwell Anytime 5Pro CGM applicator"
   },
   "blood-pressure": {
-    name: "Smart BP Monitor",
-    description:
-      "Explore blood-pressure monitoring at home. Ask about the exact model, cuff sizes, connectivity and setup support.",
+    "name": "Yuwell YE660E BP Monitor",
+    "description": "Yuwell YE660E upper-arm blood-pressure monitor. Confirm the supplied cuff size, accessories and local availability before ordering.",
+    "image": "images/products/yuwell-ye660e.webp",
+    "alt": "Yuwell YE660E upper-arm blood-pressure monitor"
   },
-  heart: {
-    name: "ECG Health Watch",
-    description:
-      "Explore wearable heart-health monitoring. Ask about the exact model, supported features, phone compatibility and intended use.",
+  "heart": {
+    "name": "Yuwell Pulse Oximeter",
+    "description": "Yuwell fingertip pulse oximeter for spot checks of oxygen saturation and pulse rate. This is not an ECG watch. Confirm the exact supplied model and intended use.",
+    "image": "images/products/yuwell-pulse-oximeter.webp",
+    "alt": "Yuwell fingertip pulse oximeter"
   },
+  "oxygen": {
+    "name": "Yuwell 10L Oxygen Concentrator",
+    "description": "Yuwell 10L oxygen concentrator. Oxygen therapy must follow a clinician’s prescription; confirm the exact model, required flow and setup support with your quote.",
+    "image": "images/products/yuwell-10l-oxygen.webp",
+    "alt": "Yuwell 10 litre oxygen concentrator"
+  },
+  "nebuliser": {
+    "name": "Yuwell 403T Nebuliser",
+    "description": "Yuwell 403T compressor nebuliser. Confirm accessories, local availability and suitability for the inhalation treatment prescribed by your clinician.",
+    "image": "images/products/yuwell-403t.webp",
+    "alt": "Yuwell 403T compressor nebuliser with accessories"
+  },
+  "thermometer": {
+    "name": "Yuwell YT-1 Thermometer",
+    "description": "Yuwell YT-1 infrared thermometer. Confirm the supplied model, instructions and local availability with your quote.",
+    "image": "images/products/yuwell-yt1.webp",
+    "alt": "Yuwell YT-1 infrared thermometer"
+  }
 };
 const search = document.getElementById("product-search");
 const filterButtons = [...document.querySelectorAll("[data-filter]")];
@@ -142,6 +163,9 @@ document.querySelectorAll("[data-product]").forEach((button) =>
       products[selectedProduct].name;
     document.getElementById("detail-description").textContent =
       products[selectedProduct].description;
+    const detailImage = document.getElementById("detail-image");
+    detailImage.src = products[selectedProduct].image;
+    detailImage.alt = products[selectedProduct].alt;
     saveButton.disabled = saved.includes(selectedProduct);
     saveButton.textContent = saved.includes(selectedProduct)
       ? "Added to enquiry list"
