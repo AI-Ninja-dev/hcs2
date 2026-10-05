@@ -1,219 +1,139 @@
 const toggle = document.getElementById("menu-toggle");
 const navLinks = document.getElementById("nav-links");
+
 function closeMenu() {
+  if (!toggle || !navLinks) return;
   navLinks.classList.remove("open");
   toggle.setAttribute("aria-expanded", "false");
   toggle.setAttribute("aria-label", "Open menu");
 }
-toggle.addEventListener("click", () => {
-  const open = navLinks.classList.toggle("open");
-  toggle.setAttribute("aria-expanded", String(open));
+
+toggle?.addEventListener("click", () => {
+  const open = navLinks?.classList.toggle("open");
+  toggle.setAttribute("aria-expanded", String(Boolean(open)));
   toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
 });
-navLinks
-  .querySelectorAll("a")
-  .forEach((link) => link.addEventListener("click", closeMenu));
+
+navLinks?.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeMenu));
 document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape" && navLinks.classList.contains("open")) {
-    closeMenu();
-    toggle.focus();
-  }
+  if (event.key === "Escape") closeMenu();
 });
 document.addEventListener("click", (event) => {
   if (!event.target.closest(".nav")) closeMenu();
 });
 matchMedia("(min-width:981px)").addEventListener("change", closeMenu);
+
 if ("IntersectionObserver" in window) {
   const observer = new IntersectionObserver(
-    (entries) =>
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-          observer.unobserve(entry.target);
-        }
-      }),
+    (entries) => entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target);
+      }
+    }),
     { threshold: 0.08 },
   );
-  document
-    .querySelectorAll(".reveal")
-    .forEach((item) => observer.observe(item));
+  document.querySelectorAll(".reveal").forEach((item) => observer.observe(item));
 }
+
 const products = {
-  "diabetes": {
-    "name": "Yuwell Anytime 5Pro CGM",
-    "description": "Yuwell Anytime 5Pro continuous glucose monitoring. Ask about sensor availability, supported phones and setup support.",
-    "image": "images/products/yuwell-anytime-5pro.webp",
-    "alt": "Yuwell Anytime 5Pro CGM applicator"
+  diabetes: {
+    name: "Yuwell Anytime 5Pro CGM",
+    description: "Continuous glucose monitoring for everyday diabetes management. Current sensor availability, supported phones and setup requirements are confirmed before order.",
+    image: "images/products/yuwell-anytime-5pro.webp",
+    alt: "Yuwell Anytime 5Pro CGM applicator",
   },
   "blood-pressure": {
-    "name": "Yuwell YE660E BP Monitor",
-    "description": "Yuwell YE660E upper-arm blood-pressure monitor. Confirm the supplied cuff size, accessories and local availability before ordering.",
-    "image": "images/products/yuwell-ye660e.webp",
-    "alt": "Yuwell YE660E upper-arm blood-pressure monitor"
+    name: "Yuwell YE660E BP Monitor",
+    description: "Upper-arm blood-pressure monitoring for home routines. Confirm the supplied cuff size, accessories and current availability before order.",
+    image: "images/products/yuwell-ye660e.webp",
+    alt: "Yuwell YE660E upper-arm blood-pressure monitor",
   },
-  "heart": {
-    "name": "Yuwell Pulse Oximeter",
-    "description": "Yuwell fingertip pulse oximeter for spot checks of oxygen saturation and pulse rate. This is not an ECG watch. Confirm the exact supplied model and intended use.",
-    "image": "images/products/yuwell-pulse-oximeter.webp",
-    "alt": "Yuwell fingertip pulse oximeter"
+  heart: {
+    name: "Yuwell Pulse Oximeter",
+    description: "Fingertip spot checks of oxygen saturation and pulse rate for home monitoring. Confirm the exact supplied model and intended use.",
+    image: "images/products/yuwell-pulse-oximeter.webp",
+    alt: "Yuwell fingertip pulse oximeter",
   },
-  "oxygen": {
-    "name": "Yuwell 10L Oxygen Concentrator",
-    "description": "Yuwell 10L oxygen concentrator. Oxygen therapy must follow a clinician’s prescription; confirm the exact model, required flow and setup support with your quote.",
-    "image": "images/products/yuwell-10l-oxygen.webp",
-    "alt": "Yuwell 10 litre oxygen concentrator"
+  oxygen: {
+    name: "Yuwell 10L Oxygen Concentrator",
+    description: "Home oxygen equipment for use within an appropriate prescribed care plan. Confirm the exact model, required flow and setup requirements before order.",
+    image: "images/products/yuwell-10l-oxygen.webp",
+    alt: "Yuwell 10 litre oxygen concentrator",
   },
-  "nebuliser": {
-    "name": "Yuwell 403T Nebuliser",
-    "description": "Yuwell 403T compressor nebuliser. Confirm accessories, local availability and suitability for the inhalation treatment prescribed by your clinician.",
-    "image": "images/products/yuwell-403t.webp",
-    "alt": "Yuwell 403T compressor nebuliser with accessories"
+  nebuliser: {
+    name: "Yuwell 403T Nebuliser",
+    description: "Compressor nebuliser equipment for prescribed inhalation therapy. Confirm accessories, availability and suitability before order.",
+    image: "images/products/yuwell-403t.webp",
+    alt: "Yuwell 403T compressor nebuliser",
   },
-  "thermometer": {
-    "name": "Yuwell YT-1 Thermometer",
-    "description": "Yuwell YT-1 infrared thermometer. Confirm the supplied model, instructions and local availability with your quote.",
-    "image": "images/products/yuwell-yt1.webp",
-    "alt": "Yuwell YT-1 infrared thermometer"
-  }
+  thermometer: {
+    name: "Yuwell YT-1 Thermometer",
+    description: "Infrared temperature monitoring for practical home-care checks. Confirm the exact supplied model and current availability before order.",
+    image: "images/products/yuwell-yt1.webp",
+    alt: "Yuwell YT-1 infrared thermometer",
+  },
 };
+
 const search = document.getElementById("product-search");
 const filterButtons = [...document.querySelectorAll("[data-filter]")];
 let category = "all";
+
 function filterProducts() {
+  if (!search) return;
   const query = search.value.toLowerCase().trim();
   let count = 0;
+
   document.querySelectorAll(".product").forEach((card) => {
     const matches =
       (category === "all" || card.dataset.category === category) &&
-      `${card.dataset.search} ${card.querySelector("h3").textContent}`
+      `${card.dataset.search || ""} ${card.querySelector("h3")?.textContent || ""}`
         .toLowerCase()
         .includes(query);
     card.hidden = !matches;
-    if (matches) count++;
+    if (matches) count += 1;
   });
-  document.getElementById("result-count").textContent =
-    `${count} ${count === 1 ? "device" : "devices"}`;
-  document.getElementById("empty-products").hidden = count !== 0;
+
+  const resultCount = document.getElementById("result-count");
+  const emptyProducts = document.getElementById("empty-products");
+  if (resultCount) resultCount.textContent = `${count} ${count === 1 ? "device" : "devices"}`;
+  if (emptyProducts) emptyProducts.hidden = count !== 0;
 }
-search.addEventListener("input", filterProducts);
-filterButtons.forEach((button) =>
+
+search?.addEventListener("input", filterProducts);
+filterButtons.forEach((button) => {
   button.addEventListener("click", () => {
     category = button.dataset.filter;
-    filterButtons.forEach((item) =>
-      item.setAttribute("aria-pressed", String(item === button)),
-    );
+    filterButtons.forEach((item) => item.setAttribute("aria-pressed", String(item === button)));
     filterProducts();
-  }),
-);
-const dialog = document.getElementById("product-dialog");
-const saveButton = document.getElementById("save-product");
-let selectedProduct;
-let previousFocus;
-let saved = [];
-try {
-  const stored = JSON.parse(sessionStorage.getItem("hcs-enquiry") || "[]");
-  if (Array.isArray(stored))
-    saved = [...new Set(stored.filter((key) => Object.hasOwn(products, key)))];
-} catch {
-  /* The enquiry list remains usable if browser storage is unavailable. */
-}
-function renderList() {
-  const list = document.getElementById("enquiry-list");
-  list.replaceChildren();
-  if (!saved.length) {
-    const p = document.createElement("p");
-    p.textContent =
-      "Your list is empty. Explore a device to add it, or download a general enquiry.";
-    list.append(p);
-  }
-  saved.forEach((key) => {
-    const row = document.createElement("div");
-    row.className = "enquiry-item";
-    const name = document.createElement("span");
-    name.textContent = products[key].name;
-    const remove = document.createElement("button");
-    remove.type = "button";
-    remove.textContent = "Remove";
-    remove.setAttribute("aria-label", `Remove ${products[key].name}`);
-    remove.addEventListener("click", () => {
-      saved = saved.filter((item) => item !== key);
-      persist();
-      renderList();
-      (
-        list.querySelector("button") ||
-        document.getElementById("download-enquiry")
-      ).focus();
-    });
-    row.append(name, remove);
-    list.append(row);
   });
-}
-function persist() {
-  try {
-    sessionStorage.setItem("hcs-enquiry", JSON.stringify(saved));
-  } catch {
-    /* Session memory is the fallback. */
-  }
-}
-document.querySelectorAll("[data-product]").forEach((button) =>
+});
+
+const dialog = document.getElementById("product-dialog");
+let previousFocus;
+
+document.querySelectorAll("[data-product]").forEach((button) => {
   button.addEventListener("click", () => {
-    selectedProduct = button.dataset.product;
+    const selected = products[button.dataset.product];
+    if (!dialog || !selected) return;
+
     previousFocus = button;
-    document.getElementById("detail-title").textContent =
-      products[selectedProduct].name;
-    document.getElementById("detail-description").textContent =
-      products[selectedProduct].description;
-    const detailImage = document.getElementById("detail-image");
-    detailImage.src = products[selectedProduct].image;
-    detailImage.alt = products[selectedProduct].alt;
-    saveButton.disabled = saved.includes(selectedProduct);
-    saveButton.textContent = saved.includes(selectedProduct)
-      ? "Added to enquiry list"
-      : "Add to enquiry list";
-    document.getElementById("save-status").textContent = "";
+    const title = document.getElementById("detail-title");
+    const description = document.getElementById("detail-description");
+    const image = document.getElementById("detail-image");
+
+    if (title) title.textContent = selected.name;
+    if (description) description.textContent = selected.description;
+    if (image) {
+      image.src = selected.image;
+      image.alt = selected.alt;
+    }
+
     dialog.showModal();
-  }),
-);
-document
-  .getElementById("close-dialog")
-  .addEventListener("click", () => dialog.close());
-dialog.addEventListener("close", () => previousFocus?.focus());
-saveButton.addEventListener("click", () => {
-  if (!saved.includes(selectedProduct)) saved.push(selectedProduct);
-  persist();
-  renderList();
-  saveButton.disabled = true;
-  saveButton.textContent = "Added to enquiry list";
-  document.getElementById("save-status").textContent =
-    "Added. Download your enquiry at the bottom of this page.";
+  });
 });
-document.getElementById("download-enquiry").addEventListener("click", () => {
-  const content = [
-    "HomeClinicStore product enquiry",
-    "",
-    ...(saved.length
-      ? saved.map((key) => `- ${products[key].name}`)
-      : ["General device and biomedical support enquiry"]),
-    "",
-    "Please confirm exact models, specifications, compatibility, prices, stock, delivery, warranty and return terms.",
-    "",
-    "My name:",
-    "My contact details:",
-    "Additional questions:",
-    "",
-    "This is an enquiry draft. No order has been placed or message sent.",
-  ].join("\n");
-  const url = URL.createObjectURL(
-    new Blob([content], { type: "text/plain;charset=utf-8" }),
-  );
-  const link = document.createElement("a");
-  link.href = url;
-  link.download = "homeclinicstore-enquiry.txt";
-  document.body.append(link);
-  link.click();
-  link.remove();
-  setTimeout(() => URL.revokeObjectURL(url), 10000);
-  document.getElementById("download-status").textContent =
-    "Enquiry file prepared. Send it through your verified HomeClinicStore contact channel.";
-});
-renderList();
+
+document.getElementById("close-dialog")?.addEventListener("click", () => dialog?.close());
+dialog?.addEventListener("close", () => previousFocus?.focus());
+
+filterProducts();
