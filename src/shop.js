@@ -119,44 +119,18 @@ function buildRequestText() {
   ].filter(Boolean).join("\n");
 }
 
-form?.addEventListener("submit", async (event) => {
+form?.addEventListener("submit", (event) => {
   event.preventDefault();
   if (!form.reportValidity()) return;
 
   const text = buildRequestText();
+  const whatsappUrl = `https://wa.me/27678042273?text=${encodeURIComponent(text)}`;
+  const opened = window.open(whatsappUrl, "_blank", "noopener,noreferrer");
 
-  try {
-    if (navigator.share) {
-      await navigator.share({
-        title: "HomeClinicStore product request",
-        text,
-      });
-      if (status) status.textContent = "Request prepared. Choose your preferred contact app to send it.";
-      return;
-    }
-
-    await navigator.clipboard.writeText(text);
-    if (status) status.textContent = "Request copied to your clipboard. Paste it into your preferred contact channel.";
-  } catch (error) {
-    if (error?.name === "AbortError") {
-      if (status) status.textContent = "Request sharing cancelled.";
-      return;
-    }
-
-    try {
-      const area = document.createElement("textarea");
-      area.value = text;
-      area.setAttribute("readonly", "");
-      area.style.position = "fixed";
-      area.style.opacity = "0";
-      document.body.append(area);
-      area.select();
-      document.execCommand("copy");
-      area.remove();
-      if (status) status.textContent = "Request copied to your clipboard. Paste it into your preferred contact channel.";
-    } catch {
-      if (status) status.textContent = "Your request is ready above. Copy the details into your preferred contact channel.";
-    }
+  if (status) {
+    status.textContent = opened
+      ? "WhatsApp opened with your product enquiry ready to send."
+      : "Allow pop-ups to open WhatsApp, or use the green WhatsApp button on this page.";
   }
 });
 
