@@ -2219,3 +2219,26 @@ dialog dt {
 .minimal-heading p,.shop-launch-heading p,.service-heading>p{line-height:1.7}
 .product-copy p,.shop-launch-body p,.pillar-card p,.service-grid p,.shop-support-grid p{line-height:1.58}
 @media(max-width:680px){.shop-clinical-note{font-size:12px}.shop-launch-badge{font-size:10px}}
+
+
+/* Human-centred launch imagery */
+.home-life-section{padding:110px 0;background:#f4f6f7}
+.home-life-heading{display:grid;grid-template-columns:1.05fr .95fr;gap:70px;align-items:end;margin-bottom:34px}
+.home-life-heading h2{margin:12px 0 0;max-width:720px}
+.home-life-heading>p{margin:0;max-width:560px;line-height:1.75}
+.home-life-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:22px}
+.home-life-card{position:relative;min-height:430px;margin:0;border-radius:28px;overflow:hidden;background:#dfe5e7}
+.home-life-card-wide{min-height:520px}
+.home-life-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.home-life-card::after{content:"";position:absolute;inset:45% 0 0;background:linear-gradient(transparent,rgba(12,27,41,.72))}
+.home-life-card figcaption{position:absolute;z-index:1;left:28px;right:28px;bottom:26px;color:#fff;display:grid;gap:6px}
+.home-life-card figcaption strong{font-size:22px;font-family:var(--font-display),sans-serif}
+.home-life-card figcaption span{max-width:520px;font-size:14px;line-height:1.55;color:#edf2f5}
+.shop-lifestyle-band{padding:96px 0;background:#eef3f5}
+.shop-lifestyle-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
+.shop-lifestyle-grid figure{margin:0;min-height:500px;border-radius:28px;overflow:hidden}
+.shop-lifestyle-grid figure img{width:100%;height:100%;object-fit:cover;display:block}
+.shop-lifestyle-grid h2{margin:12px 0 18px;max-width:600px}
+.shop-lifestyle-grid p{max-width:560px;line-height:1.75}
+@media(max-width:800px){.home-life-heading,.home-life-grid,.shop-lifestyle-grid{grid-template-columns:1fr;gap:28px}.home-life-section,.shop-lifestyle-band{padding:70px 0}.home-life-card,.home-life-card-wide{min-height:380px}.shop-lifestyle-grid figure{min-height:380px}}
+@media(max-width:520px){.home-life-card,.home-life-card-wide,.shop-lifestyle-grid figure{min-height:320px;border-radius:22px}.home-life-card figcaption{left:20px;right:20px;bottom:20px}.home-life-card figcaption strong{font-size:19px}}
