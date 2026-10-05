@@ -2209,3 +2209,13 @@ dialog dt {
 .floating-whatsapp:hover{transform:translateY(-2px);box-shadow:0 18px 42px rgba(17,60,43,.4)}
 .floating-whatsapp svg{width:23px;height:23px;fill:currentColor}
 @media(max-width:680px){.floating-whatsapp{right:14px;bottom:14px;width:54px;height:54px;min-height:54px;padding:0;justify-content:center}.floating-whatsapp span{display:none}.footer-contact-line{display:grid;gap:7px}.social-icon{width:40px;height:40px}}
+
+
+/* Flagship CT3 + launch professionalism refinements */
+.minimal-cgm-device img,.shop-launch-hero-card img,.shop-cgm-launch-product img{object-fit:contain;background:#fff}
+.shop-launch-hero-card,.minimal-cgm-device,.shop-cgm-launch-product{box-shadow:0 20px 55px rgba(25,45,66,.08)}
+.shop-launch-badge{letter-spacing:.09em}
+.shop-clinical-note{max-width:980px;line-height:1.65}
+.minimal-heading p,.shop-launch-heading p,.service-heading>p{line-height:1.7}
+.product-copy p,.shop-launch-body p,.pillar-card p,.service-grid p,.shop-support-grid p{line-height:1.58}
+@media(max-width:680px){.shop-clinical-note{font-size:12px}.shop-launch-badge{font-size:10px}}
