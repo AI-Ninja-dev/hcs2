@@ -2193,3 +2193,19 @@ dialog dt {
   .shop-policy-launch{padding-bottom:76px}.shop-request-launch{padding:76px 0}
 }
 @media(prefers-reduced-motion:reduce){.shop-launch *{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+
+
+/* Social footer + direct WhatsApp chat */
+.footer-social{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.social-icon{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;border:1px solid rgba(255,255,255,.18);color:#fff;opacity:.55}
+.social-icon.whatsapp{opacity:1;background:#1f7a55;border-color:#1f7a55;transition:transform .2s ease,background .2s ease}
+.social-icon.whatsapp:hover{transform:translateY(-2px);background:#176846}
+.social-icon svg{width:19px;height:19px;fill:currentColor;stroke:currentColor;stroke-width:1.7}
+.social-icon svg rect,.social-icon svg circle{fill:none}
+.footer-contact-line{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:18px;font-size:13px;color:rgba(255,255,255,.72)}
+.footer-contact-line a{color:inherit;text-decoration:none}
+.footer-contact-line a:hover{color:#fff}
+.floating-whatsapp{position:fixed;z-index:90;right:22px;bottom:22px;display:inline-flex;align-items:center;gap:10px;min-height:52px;padding:0 18px;border-radius:999px;background:#1f7a55;color:#fff;text-decoration:none;font-size:14px;font-weight:700;box-shadow:0 14px 34px rgba(17,60,43,.30);transition:transform .2s ease,box-shadow .2s ease}
+.floating-whatsapp:hover{transform:translateY(-2px);box-shadow:0 18px 42px rgba(17,60,43,.4)}
+.floating-whatsapp svg{width:23px;height:23px;fill:currentColor}
+@media(max-width:680px){.floating-whatsapp{right:14px;bottom:14px;width:54px;height:54px;min-height:54px;padding:0;justify-content:center}.floating-whatsapp span{display:none}.footer-contact-line{display:grid;gap:7px}.social-icon{width:40px;height:40px}}
