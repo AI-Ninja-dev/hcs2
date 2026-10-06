@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Manage supported home medical equipment lifecycle records, service history, calibration status and certificates with HomeClinicStore." />
+  <meta name="theme-color" content="#f7f8f6" />
+  <link rel="icon" href="hcs-favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="hcs-favicon.svg" />
+  <title>My Equipment | HomeClinicStore</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="business-config.js"></script>
+  <script defer src="analytics.js"></script>
+  <script defer src="equipment.js"></script>
+</head>
+<body class="equipment-portal-page">
+  <a class="skip-link" href="#equipment-main">Skip to equipment</a>
+
+  <header class="nav-wrap minimal-nav">
+    <nav class="nav shell" aria-label="Primary navigation">
+      <a class="brand" href="index.html#services" aria-label="HomeClinicStore home"><img class="brand-logo" src="hcs-logo.png" alt="HomeClinicStore" width="920" height="180" /></a>
+      <div class="nav-links">
+        <a href="index.html">Home</a><a href="shop.html">Shop</a><a href="index.html#services">Biomedical services</a><a href="#documents">Certificates</a>
+      </div>
+      <div class="nav-actions"><a class="btn btn-dark" href="#register-equipment">Register device</a></div>
+    </nav>
+  </header>
+
+  <main id="equipment-main">
+    <section class="shell equipment-hero">
+      <div>
+        <span class="eyebrow">MY EQUIPMENT · LIFECYCLE MANAGEMENT</span>
+        <h1>Every device. Every service event. Every certificate.</h1>
+        <p>Register supported home medical equipment once, then keep its service status, calibration history, repairs, documents and next due dates together in one mobile-friendly record.</p>
+        <div class="hero-actions"><a class="btn btn-accent" href="#register-equipment">Add equipment</a><a class="text-link" href="#documents">Certificates & documents →</a></div>
+      </div>
+      <div class="equipment-hero-card">
+        <span>Lifecycle</span>
+        <div class="equipment-hero-flow"><b>Register</b><i></i><b>Maintain</b><i></i><b>Calibrate</b><i></i><b>Repair</b><i></i><b>Certify</b></div>
+      </div>
+    </section>
+
+    <section class="shell equipment-dashboard">
+      <div class="equipment-dashboard-head"><div><span class="eyebrow">EQUIPMENT OVERVIEW</span><h2>Your equipment records</h2></div><button id="open-register" class="btn btn-dark" type="button">Register device</button></div>
+      <div class="equipment-kpi-grid">
+        <article><span>Registered</span><strong id="kpi-total">0</strong><small>equipment records</small></article>
+        <article><span>Due soon</span><strong id="kpi-due">0</strong><small>service/calibration</small></article>
+        <article><span>Overdue</span><strong id="kpi-overdue">0</strong><small>needs attention</small></article>
+        <article><span>Documents</span><strong id="kpi-docs">0</strong><small>stored records</small></article>
+      </div>
+
+      <div class="equipment-toolbar">
+        <label class="equipment-search">Search equipment<input id="equipment-search" type="search" placeholder="Manufacturer, model, serial or asset number" /></label>
+        <div class="equipment-filter-row" role="group" aria-label="Filter equipment">
+          <button type="button" data-equipment-filter="all" aria-pressed="true">All</button>
+          <button type="button" data-equipment-filter="current">Current</button>
+          <button type="button" data-equipment-filter="due">Due soon</button>
+          <button type="button" data-equipment-filter="overdue">Overdue</button>
+          <button type="button" data-equipment-filter="service">Under service</button>
+          <button type="button" data-equipment-filter="retired">Retired</button>
+        </div>
+      </div>
+
+      <div id="equipment-list" class="equipment-record-grid"></div>
+      <div id="equipment-empty" class="equipment-empty-state">
+        <h3>No equipment registered yet.</h3>
+        <p>Add your first device to start building its lifecycle, service and certificate history.</p>
+        <button id="empty-register" class="btn btn-accent" type="button">Register equipment</button>
+      </div>
+    </section>
+
+    <section id="documents" class="equipment-docs-section">
+      <div class="shell">
+        <div class="equipment-dashboard-head"><div><span class="eyebrow">DOCUMENTS & CERTIFICATES</span><h2>Keep records linked to the correct device.</h2></div></div>
+        <p class="equipment-docs-lead">Store calibration certificates, service reports, inspection records and job cards against the equipment record they belong to. Files stored here remain in this browser unless a future secure account backend is connected.</p>
+        <div id="document-list" class="equipment-document-list"></div>
+        <div id="document-empty" class="equipment-empty-state compact"><p>No certificates or documents stored yet.</p></div>
+      </div>
+    </section>
+
+    <section class="shell equipment-policy-note">
+      <span class="eyebrow">DATA & ACCESS</span>
+      <h2>Lifecycle records accessible online, with backend-ready structure.</h2>
+      <p>This launch version provides a working browser-based equipment lifecycle workspace. It does not pretend to be a server-authenticated customer account. The data model is structured so secure login, cloud storage, technician workflows and customer-specific document access can be connected later without redesigning the customer experience.</p>
+    </section>
+  </main>
+
+  <dialog id="equipment-dialog" class="equipment-dialog">
+    <form id="equipment-form" method="dialog">
+      <div class="equipment-dialog-head"><div><span class="eyebrow">REGISTER EQUIPMENT</span><h2>Add a device</h2></div><button type="button" id="close-register" aria-label="Close">×</button></div>
+      <div class="equipment-form-grid">
+        <label>Equipment type<input name="type" required placeholder="e.g. Blood-pressure monitor" /></label>
+        <label>Manufacturer<input name="manufacturer" required placeholder="e.g. Yuwell" /></label>
+        <label>Model<input name="model" required /></label>
+        <label>Serial number<input name="serial" required /></label>
+        <label>Asset number<input name="asset" /></label>
+        <label>Location<input name="location" placeholder="Home / room / site" /></label>
+        <label>Purchase date<input name="purchaseDate" type="date" /></label>
+        <label>Next service due<input name="serviceDue" type="date" /></label>
+        <label>Next calibration due<input name="calibrationDue" type="date" /></label>
+        <label>Status<select name="status"><option value="current">Current</option><option value="due">Due soon</option><option value="overdue">Overdue</option><option value="service">Under service</option><option value="retired">Retired</option></select></label>
+        <label class="span-2">Notes<textarea name="notes" rows="3" placeholder="Condition, accessories, history or service notes"></textarea></label>
+      </div>
+      <div class="equipment-dialog-actions"><button class="btn btn-accent" type="submit">Save equipment</button><button class="btn btn-light" type="button" id="cancel-register">Cancel</button></div>
+    </form>
+  </dialog>
+
+  <dialog id="record-dialog" class="equipment-dialog equipment-record-dialog">
+    <div id="record-dialog-content"></div>
+  </dialog>
+
+  <footer class="minimal-footer">
+    <div class="shell">
+      <a class="brand footer-brand" href="index.html"><img src="hcs-logo.png" alt="HomeClinicStore" width="920" height="180" /></a>
+      <p>Online lifecycle management and biomedical support for supported home medical equipment.</p>
+      <div class="footer-contact-line"><a href="tel:+27678042273">+27 67 804 2273</a><a href="mailto:info@homeclinic.co.za">info@homeclinic.co.za</a><span>16 Koeberg Road, Milnerton, Cape Town</span></div>
+    </div>
+  </footer>
+</body>
+</html>
