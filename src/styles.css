@@ -2409,3 +2409,20 @@ html,body{max-width:100%;overflow-x:hidden}
 @media(prefers-reduced-motion:reduce){
   .cart-panel,.cart-scrim,.add-cart-btn{transition:none!important}
 }
+
+
+/* Signed quotation acceptance */
+.quote-signature{margin:18px 0;padding:18px;background:#fff;border:1px solid #dfe5e1;border-radius:18px}
+.quote-signature-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px}
+.quote-signature-head h3{margin:5px 0 0;font-size:22px}
+.quote-signature-head button{min-height:40px;border:1px solid #d8dfdb;border-radius:999px;background:#fff;padding:0 14px;font:inherit;font-size:11px;font-weight:700;cursor:pointer}
+.quote-signature>p{font-size:12px;line-height:1.55;color:#66746d}
+#signature-pad{display:block;width:100%;height:150px;border:1px dashed #b9c5bf;border-radius:14px;background:#fff;touch-action:none;cursor:crosshair}
+.quote-acceptance{display:flex;align-items:flex-start;gap:9px;margin-top:12px;font-size:11px;line-height:1.45;color:#4f5e56}
+.quote-acceptance input{width:18px;height:18px;flex:0 0 auto;margin-top:0}
+#share-signed-quote,#email-signed-quote{min-height:48px}
+@media(max-width:700px){
+  .quote-signature{padding:15px}
+  .quote-signature-head{align-items:center}
+  #signature-pad{height:170px}
+}
