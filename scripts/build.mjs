@@ -7,12 +7,17 @@ await rm('dist', { recursive: true, force: true });
 await mkdir('dist', { recursive: true });
 await cp('src', 'dist', { recursive: true });
 
-const htmlPath = 'dist/index.html';
-let html = await readFile(htmlPath, 'utf8');
-for (const asset of ['styles.css', 'app.js']) {
-  const content = await readFile(`dist/${asset}`);
-  const version = createHash('sha256').update(content).digest('hex').slice(0, 12);
-  html = html.replace(asset, `${asset}?v=${version}`);
+const assets = ['styles.css','app.js','analytics.js','business-config.js','shop.js','commerce.js'];
+for (const page of ['index.html','shop.html']) {
+  const path = 'dist/' + page;
+  let html = await readFile(path, 'utf8');
+  for (const asset of assets) {
+    try {
+      const content = await readFile('dist/' + asset);
+      const version = createHash('sha256').update(content).digest('hex').slice(0, 12);
+      html = html.replaceAll(asset, asset + '?v=' + version);
+    } catch {}
+  }
+  await writeFile(path, html);
 }
-await writeFile(htmlPath, html);
 console.log('\nProduction build complete: dist/');
