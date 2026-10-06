@@ -40,31 +40,19 @@ if ("IntersectionObserver" in window) {
 const expandedCatalogue = [
   { brand: "Yuwell", model: "Anytime 5 Pro CGM", category: "diabetes", label: "CGM", detail: "Continuous glucose monitoring option for home diabetes management and trend tracking.", image: "images/products/yuwell-anytime-5pro.webp" },
   { brand: "Yuwell", model: "YX301 Pulse Oximeter", category: "heart", label: "Pulse & oxygen", detail: "Fingertip SpO₂ and pulse-rate spot checks for everyday home monitoring.", image: "images/products/yuwell-pulse-oximeter.webp" },
-  { brand: "Yuwell", model: "5L Oxygen Concentrator", category: "home-equipment", label: "Respiratory", detail: "Home oxygen-concentrator range for prescribed oxygen therapy; exact Yuwell model confirmed before order.", image: "https://www.emergency-trolley.com/photo/pl13947762-yuwell_brand_5l_medical_oxygen_concentrator_flow_93_oxygen_generator_machine.jpg" },
-  { brand: "Yuwell", model: "M102 Mesh Nebuliser", category: "home-equipment", label: "Respiratory", detail: "Compact mesh-nebuliser option for prescribed inhalation therapy at home.", image: "https://down-sg.img.susercontent.com/file/sg-11134208-82623-mjta1p8w1czk40" },
-  { brand: "Yuwell", model: "Auto CPAP", category: "home-equipment", label: "Sleep & respiratory", detail: "Yuwell positive-airway-pressure equipment for prescribed home sleep-therapy use.", image: "https://s11.gifyu.com/images/SAy66.jpg" },
   { brand: "Yuwell", model: "BiPAP / Bi-Level PAP", category: "home-equipment", label: "Sleep & respiratory", detail: "Yuwell bi-level positive-airway-pressure range for supported prescribed home-care requirements.", image: "images/catalog/cpap.png" },
 
   { brand: "Rossmax", model: "Z5 PARR BP Monitor", category: "blood-pressure", label: "Blood pressure", detail: "Automatic upper-arm monitor with PARR arrhythmia screening and Bluetooth connectivity.", image: "images/drive/rossmax-z5.jpg" },
-  { brand: "Rossmax", model: "Z1 BP Monitor", category: "blood-pressure", label: "Blood pressure", detail: "Automatic upper-arm home blood-pressure monitor with USB Type-C power support.", image: "https://down-sg.img.susercontent.com/file/sg-11134201-7qvd6-lf2ohk3y4wbd45" },
   { brand: "Rossmax", model: "X5 BT BP Monitor", category: "blood-pressure", label: "Blood pressure", detail: "Bluetooth-connected upper-arm monitor with PARR arrhythmia screening.", image: "images/drive/rossmax-x5.webp" },
   { brand: "Rossmax", model: "X3 BT BP Monitor", category: "blood-pressure", label: "Blood pressure", detail: "Connected upper-arm home blood-pressure monitor compatible with Rossmax Healthstyle workflows.", image: "images/drive/rossmax-x3.jpg" },
-  { brand: "Rossmax", model: "X9 BT BP Monitor", category: "blood-pressure", label: "Blood pressure", detail: "Connected blood-pressure monitoring with expanded arrhythmia detection features.", image: "https://www.proalergiky.cz/CMTrade/media/content/produkty_obrazky/Rossmax_X9_1.jpg" },
   { brand: "Rossmax", model: "SB200 Pulse Oximeter", category: "heart", label: "Pulse & oxygen", detail: "Fingertip SpO₂ and pulse monitoring with Rossmax Artery Check Technology.", image: "images/drive/rossmax-sb200.webp" },
   { brand: "Rossmax", model: "SA300 Handheld Pulse Oximeter", category: "heart", label: "Pulse & oxygen", detail: "Handheld SpO₂ and pulse monitor with colour display and optional probe support.", image: "images/drive/rossmax-sa300.webp" },
   { brand: "Rossmax", model: "HC700 BT Thermometer", category: "home-equipment", label: "Temperature", detail: "Bluetooth non-contact telephoto thermometer with one-second measurement.", image: "images/drive/rossmax-hc700bt-lcd.webp" },
-  { brand: "Rossmax", model: "RA600 Ear Thermometer", category: "home-equipment", label: "Temperature", detail: "Infrared ear thermometer for quick home temperature measurement.", image: "https://yalladealnow.com/cdn/shop/files/62138b7bab60fed8647a1499_rossmax-infrared-ear-thermometer-ra600.png?v=1745838996&width=1200" },
-  { brand: "Rossmax", model: "HA500 Temple Thermometer", category: "home-equipment", label: "Temperature", detail: "Non-contact temple thermometer with rapid one-second measurement.", image: "https://ecombe.nahdionline.com/media/catalog/product/r/o/rossmax-non-contact-digital-thermometer-ha500-0kjpg.jpg" },
-  { brand: "Rossmax", model: "TG380 Flexible Thermometer", category: "home-equipment", label: "Temperature", detail: "Flexible digital thermometer for routine home temperature checks.", image: "https://static-01.daraz.lk/p/45b14fcfde2deca713f917ab9f8e82c2.png" },
-  { brand: "Rossmax", model: "TG100 Digital Thermometer", category: "home-equipment", label: "Temperature", detail: "Standard digital thermometer for home temperature monitoring.", image: "https://guardianindonesia.co.id/media/catalog/product/3/1/3112005.jpg?bg-color=255%2C255%2C255&fit=bounds&optimize=high" },
   { brand: "Rossmax", model: "HS200 BT+USB Glucose Meter", category: "diabetes", label: "Glucose", detail: "Bluetooth and USB blood-glucose monitoring system with fast testing and memory.", image: "images/drive/rossmax-hs200-device.webp" },
   { brand: "Rossmax", model: "HS200 Glucose Meter", category: "diabetes", label: "Glucose", detail: "Blood-glucose monitoring system for routine home diabetes checks.", image: "images/catalog/glucometer.webp" },
   { brand: "Rossmax", model: "HS200 Test Strips", category: "diabetes", label: "Consumables", detail: "Compatible Rossmax HS200 blood-glucose test strips; meter compatibility confirmed before supply.", image: "images/catalog/glucose-strips.jpg" },
   { brand: "Rossmax", model: "WF262 Body Fat Scale", category: "home-equipment", label: "Weight", detail: "Connected body-weight and body-composition tracking for home wellness monitoring.", image: "images/drive/rossmax-wf262.webp" },
-  { brand: "Rossmax", model: "NL100 Piston Nebuliser", category: "home-equipment", label: "Respiratory", detail: "Compressor/piston nebuliser for prescribed respiratory therapy at home.", image: "images/products/yuwell-403t.webp" },
 
-  { brand: "CONTEC", model: "CONTEC08C-BT BP Monitor", category: "blood-pressure", label: "Blood pressure", detail: "Bluetooth electronic sphygmomanometer for home NIBP measurement with stored-data transfer.", image: "images/catalog/bp-z5.jpg" },
-  { brand: "CONTEC", model: "OC30 Oxygen Concentrator", category: "home-equipment", label: "Respiratory", detail: "Mobile oxygen concentrator designed for family and community oxygen supply, with alarms and nebulisation support.", image: "images/products/yuwell-10l-oxygen.webp" }
 ];
 
 function injectExpandedCatalogue() {
@@ -114,14 +102,10 @@ function injectExpandedCatalogue() {
   function ensureShopImages() {
     document.querySelectorAll(".shop-launch-media img").forEach((img) => {
       img.addEventListener("error", () => {
-        const media = img.closest(".shop-launch-media");
-        img.remove();
-        media?.classList.add("image-unavailable");
-        if (media && !media.querySelector(".shop-image-unavailable")) {
-          const note = document.createElement("small");
-          note.className = "shop-image-unavailable";
-          note.textContent = "Product image being updated";
-          media.appendChild(note);
+        const card = img.closest(".shop-launch-card");
+        if (card) {
+          card.hidden = true;
+          card.dataset.imageUnavailable = "true";
         }
       }, { once: true });
     });
