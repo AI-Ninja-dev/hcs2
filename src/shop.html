@@ -415,9 +415,20 @@
         <label class="quote-span">Notes<textarea id="quote-notes" rows="3"></textarea></label>
       </div>
     </details>
+    <section class="quote-signature" aria-labelledby="quote-signature-title">
+      <div class="quote-signature-head">
+        <div><span class="eyebrow">ACCEPTANCE</span><h3 id="quote-signature-title">Sign quotation</h3></div>
+        <button id="clear-signature" type="button">Clear signature</button>
+      </div>
+      <p>Sign below if you want to return an accepted quotation to HomeClinicStore.</p>
+      <canvas id="signature-pad" width="900" height="260" aria-label="Customer signature pad"></canvas>
+      <label class="quote-acceptance"><input id="quote-accepted" type="checkbox" /> I confirm that I am authorised to accept/sign this quotation.</label>
+    </section>
     <div class="cart-actions">
       <button class="btn btn-accent" id="generate-quote" type="button">Generate Quote PDF</button>
       <button class="btn btn-light" id="print-quote" type="button">Print Quote</button>
+      <button class="btn btn-dark" id="share-signed-quote" type="button">Share signed quote</button>
+      <button class="btn btn-light" id="email-signed-quote" type="button">Email signed quote</button>
       <button class="text-link cart-clear" id="clear-cart" type="button">Clear cart</button>
     </div>
     <p class="cart-commercial-note">Pricing and availability are subject to HomeClinicStore confirmation. Generated documents are quotations, not tax invoices.</p>
