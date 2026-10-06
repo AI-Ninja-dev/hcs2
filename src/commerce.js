@@ -76,18 +76,23 @@
     const deliveryEntered=Math.max(0,Number($("#delivery-amount")?.value || 0));
     const deliveryCents=deliveryMode==="collection" ? 0 : (deliveryEntered>0 ? toCents(deliveryEntered) : 0);
     const deliveryConfirmed=deliveryMode==="collection" || deliveryEntered>0;
+    const applyVat=Boolean(business.applyVatToQuotes);
+    const r=Number(business.vatRate || .15);
+    const grossBeforeVatCents=netCents+deliveryCents;
     let vatCents=0;
-    if(business.vatRegistered){
-      const r=Number(business.vatRate || .15);
+    let netExVatCents=grossBeforeVatCents;
+    let totalCents=grossBeforeVatCents;
+    if(applyVat){
       if((business.defaultPriceVatTreatment||"inclusive")==="inclusive"){
-        vatCents=Math.round(netCents*r/(1+r));
+        vatCents=Math.round(grossBeforeVatCents*r/(1+r));
+        netExVatCents=grossBeforeVatCents-vatCents;
       } else {
-        vatCents=Math.round((netCents+deliveryCents)*r);
+        vatCents=Math.round(grossBeforeVatCents*r);
+        netExVatCents=grossBeforeVatCents;
+        totalCents=grossBeforeVatCents+vatCents;
       }
     }
-    const totalCents=(business.vatRegistered && (business.defaultPriceVatTreatment||"inclusive")==="exclusive")
-      ? netCents+deliveryCents+vatCents : netCents+deliveryCents;
-    return {priced,unpriced,subtotalCents,discountCents,netCents,deliveryCents,deliveryConfirmed,vatCents,totalCents};
+    return {priced,unpriced,subtotalCents,discountCents,netCents,deliveryCents,deliveryConfirmed,vatCents,netExVatCents,totalCents,applyVat};
   }
 
   function renderCart(){
@@ -112,12 +117,41 @@
     if($("#cart-subtotal")) $("#cart-subtotal").textContent=c.priced.length?money(fromCents(c.subtotalCents)):"To be confirmed";
     if($("#cart-discount")) $("#cart-discount").textContent=c.discountCents?("-"+money(fromCents(c.discountCents))):money(0);
     if($("#cart-delivery")) $("#cart-delivery").textContent=c.deliveryConfirmed?money(fromCents(c.deliveryCents)):"To be confirmed";
-    if($("#cart-vat")) $("#cart-vat").textContent=business.vatRegistered?money(fromCents(c.vatCents)):"Not applied";
+    if($("#cart-vat")) $("#cart-vat").textContent=c.applyVat?money(fromCents(c.vatCents)):"Not applied";
     if($("#cart-total")) $("#cart-total").textContent=c.priced.length?money(fromCents(c.totalCents))+(c.unpriced.length?" + items TBC":""):"To be confirmed";
   }
 
   function openCart(){ const p=$("#cart-panel"),s=$("#cart-scrim"); if(!p)return; p.classList.add("open"); p.setAttribute("aria-hidden","false"); s?.classList.add("open"); $("#cart-toggle")?.setAttribute("aria-expanded","true"); document.body.classList.add("cart-open"); }
   function closeCart(){ const p=$("#cart-panel"),s=$("#cart-scrim"); p?.classList.remove("open"); p?.setAttribute("aria-hidden","true"); s?.classList.remove("open"); $("#cart-toggle")?.setAttribute("aria-expanded","false"); document.body.classList.remove("cart-open"); }
+
+  let signatureDirty=false;
+  function initSignaturePad(){
+    const canvas=$("#signature-pad"); if(!canvas) return;
+    const ctx=canvas.getContext("2d");
+    const reset=()=>{ctx.clearRect(0,0,canvas.width,canvas.height);ctx.fillStyle="#fff";ctx.fillRect(0,0,canvas.width,canvas.height);signatureDirty=false;};
+    reset();
+    ctx.lineWidth=4;ctx.lineCap="round";ctx.lineJoin="round";ctx.strokeStyle="#102a4c";
+    let drawing=false;
+    const point=(e)=>{const r=canvas.getBoundingClientRect();const t=e.touches?.[0]||e;return {x:(t.clientX-r.left)*(canvas.width/r.width),y:(t.clientY-r.top)*(canvas.height/r.height)};};
+    const start=(e)=>{e.preventDefault();drawing=true;const p=point(e);ctx.beginPath();ctx.moveTo(p.x,p.y);};
+    const move=(e)=>{if(!drawing)return;e.preventDefault();const p=point(e);ctx.lineTo(p.x,p.y);ctx.stroke();signatureDirty=true;};
+    const end=()=>{drawing=false;};
+    canvas.addEventListener("pointerdown",start);canvas.addEventListener("pointermove",move);canvas.addEventListener("pointerup",end);canvas.addEventListener("pointerleave",end);
+    $("#clear-signature")?.addEventListener("click",reset);
+  }
+  function signatureData(){return signatureDirty?$("#signature-pad")?.toDataURL("image/png"):null;}
+  function requireSigned(){
+    if(!signatureDirty){alert("Please sign the quotation first.");return false;}
+    if(!$("#quote-accepted")?.checked){alert("Please confirm that you are authorised to accept the quotation.");return false;}
+    return true;
+  }
+  async function loadLogoData(){
+    return new Promise(resolve=>{
+      const img=new Image();
+      img.onload=()=>{try{const c=document.createElement("canvas");c.width=img.naturalWidth||920;c.height=img.naturalHeight||180;c.getContext("2d").drawImage(img,0,0);resolve(c.toDataURL("image/png"));}catch{resolve(null);}};
+      img.onerror=()=>resolve(null);img.src="hcs-logo.png";
+    });
+  }
 
   function quoteRef(){
     const d=new Date(); const ds=[d.getFullYear(),String(d.getMonth()+1).padStart(2,"0"),String(d.getDate()).padStart(2,"0")].join("");
@@ -131,53 +165,136 @@
     const d=new Date(); d.setDate(d.getDate()+Number(business.quoteValidityDays||14)); return d.toLocaleDateString("en-ZA");
   }
 
-  function generatePdf(){
-    if(!cart.length){ alert("Add at least one product before generating a quotation."); return; }
-    if(!window.jspdf?.jsPDF){ alert("PDF generator could not load. Please use Print Quote."); return; }
-    const {jsPDF}=window.jspdf, doc=new jsPDF({unit:"mm",format:"a4"}), ref=quoteRef(), c=commercial(), cust=customer();
-    let y=16; const left=16, right=194;
-    doc.setFillColor(16,42,76); doc.roundedRect(left,y,178,24,4,4,"F");
-    doc.setTextColor(255,255,255); doc.setFontSize(20); doc.setFont(undefined,"bold"); doc.text("HCS  |  QUOTATION",left+7,y+10);
-    doc.setFontSize(9); doc.setFont(undefined,"normal"); doc.text(ref,left+7,y+17); y+=34;
-    doc.setTextColor(20,28,35); doc.setFontSize(10);
-    const info=[business.name,business.address,business.email,business.phoneDisplay].filter(Boolean);
-    doc.text(info,left,y); doc.text(["Quote date: "+new Date().toLocaleDateString("en-ZA"),"Valid until: "+expiry()],right,y,{align:"right"}); y+=24;
-    if(cust.company||cust.contact||cust.email||cust.phone||cust.address){
-      doc.setFont(undefined,"bold"); doc.text("Customer",left,y); doc.setFont(undefined,"normal"); y+=6;
-      const cc=[cust.company,cust.contact,cust.email,cust.phone,cust.address].filter(Boolean); doc.text(cc,left,y); y+=Math.max(12,cc.length*5+4);
-    }
-    doc.setFont(undefined,"bold"); doc.text("Items",left,y); y+=7; doc.setFontSize(8);
+  async function buildQuotePdf({signed=false}={}){
+    if(!cart.length) throw new Error("EMPTY_CART");
+    if(!window.jspdf?.jsPDF) throw new Error("NO_PDF");
+    if(signed && !requireSigned()) throw new Error("NOT_SIGNED");
+    const {jsPDF}=window.jspdf;
+    const doc=new jsPDF({unit:"mm",format:"a4"});
+    const ref=quoteRef(), c=commercial(), cust=customer(), logo=await loadLogoData(), sig=signed?signatureData():null;
+    const left=15,right=195,pageW=210;
+    let y=0;
+
+    const pageHeader=()=>{
+      doc.setFillColor(16,42,76);doc.rect(0,0,pageW,35,"F");
+      if(logo){try{doc.addImage(logo,"PNG",15,8,60,12);}catch{}}
+      else{doc.setTextColor(255,255,255);doc.setFontSize(18);doc.setFont(undefined,"bold");doc.text("HomeClinicStore",15,18);}
+      doc.setTextColor(255,255,255);doc.setFontSize(15);doc.setFont(undefined,"bold");doc.text("QUOTATION",right,13,{align:"right"});
+      doc.setFontSize(8.5);doc.setFont(undefined,"normal");doc.text(ref,right,20,{align:"right"});doc.text("Date: "+new Date().toLocaleDateString("en-ZA"),right,26,{align:"right"});
+      y=45;
+    };
+    const newPage=()=>{doc.addPage();pageHeader();};
+    pageHeader();
+
+    doc.setTextColor(25,34,42);doc.setFontSize(9);
+    doc.setFont(undefined,"bold");doc.text("FROM",left,y);doc.text("QUOTE DETAILS",118,y);y+=6;
+    doc.setFont(undefined,"normal");
+    doc.text([business.name,business.address,business.email,business.phoneDisplay].filter(Boolean),left,y);
+    doc.text(["Reference: "+ref,"Valid until: "+expiry(),"Currency: ZAR"],118,y);
+    y+=25;
+
+    doc.setFillColor(241,245,247);doc.roundedRect(left,y,180,22,3,3,"F");
+    doc.setFont(undefined,"bold");doc.text("CUSTOMER",left+5,y+6);doc.setFont(undefined,"normal");
+    const customerLines=[cust.company,cust.contact,cust.email,cust.phone,cust.address].filter(Boolean);
+    doc.text(customerLines.length?customerLines:["Customer details not supplied"],left+5,y+12,{maxWidth:168});y+=30;
+
+    doc.setFillColor(16,42,76);doc.rect(left,y,180,8,"F");
+    doc.setTextColor(255,255,255);doc.setFont(undefined,"bold");doc.setFontSize(8);
+    doc.text("DESCRIPTION",left+3,y+5.5);doc.text("QTY",130,y+5.5,{align:"right"});doc.text("UNIT",159,y+5.5,{align:"right"});doc.text("LINE TOTAL",192,y+5.5,{align:"right"});y+=10;
+    doc.setTextColor(25,34,42);doc.setFont(undefined,"normal");
+
     cart.forEach((i,idx)=>{
-      if(y>260){doc.addPage();y=18;}
-      const line=(idx+1)+". "+i.brand+" "+i.name+"  × "+i.qty;
-      doc.setFont(undefined,"bold"); doc.text(line,left,y); doc.setFont(undefined,"normal");
-      doc.text(Number.isFinite(i.price)?money(i.price*i.qty):"Price to be confirmed",right,y,{align:"right"}); y+=5;
+      if(y>245){newPage();doc.setFillColor(16,42,76);doc.rect(left,y,180,8,"F");doc.setTextColor(255,255,255);doc.setFont(undefined,"bold");doc.text("DESCRIPTION",left+3,y+5.5);doc.text("QTY",130,y+5.5,{align:"right"});doc.text("UNIT",159,y+5.5,{align:"right"});doc.text("LINE TOTAL",192,y+5.5,{align:"right"});y+=10;doc.setTextColor(25,34,42);doc.setFont(undefined,"normal");}
+      if(idx%2===0){doc.setFillColor(248,250,251);doc.rect(left,y-1,180,10,"F");}
+      doc.text((i.brand+" "+i.name).slice(0,64),left+3,y+5);
+      doc.text(String(i.qty),130,y+5,{align:"right"});
+      doc.text(Number.isFinite(i.price)?money(i.price):"TBC",159,y+5,{align:"right"});
+      doc.text(Number.isFinite(i.price)?money(i.price*i.qty):"TBC",192,y+5,{align:"right"});y+=10;
     });
-    y+=5; doc.line(left,y,right,y); y+=7; doc.setFontSize(9);
-    const summary=[
-      ["Subtotal",c.priced.length?money(fromCents(c.subtotalCents)):"To be confirmed"],
+
+    y+=5;if(y>224)newPage();
+    const grossBeforeVat=c.netCents+c.deliveryCents;
+    const totals=[
+      ["Subtotal (selling prices)",c.priced.length?money(fromCents(c.subtotalCents)):"TBC"],
       ["Discount",c.discountCents?("-"+money(fromCents(c.discountCents))):money(0)],
       ["Delivery",c.deliveryConfirmed?money(fromCents(c.deliveryCents)):"To be confirmed"],
-      ["VAT",business.vatRegistered?money(fromCents(c.vatCents)):"Not applied"],
-      ["TOTAL",c.priced.length?money(fromCents(c.totalCents))+(c.unpriced.length?" + TBC":""):"To be confirmed"]
+      ["Net excl. VAT",c.applyVat?money(fromCents(c.netExVatCents)):money(fromCents(grossBeforeVat))],
+      ["VAT "+Math.round(Number(business.vatRate||.15)*100)+"%",c.applyVat?money(fromCents(c.vatCents)):"Not applied"],
+      ["TOTAL INCL. VAT",c.priced.length?money(fromCents(c.totalCents))+(c.unpriced.length?" + TBC":""):"TBC"]
     ];
-    summary.forEach(([a,b],idx)=>{doc.setFont(undefined,idx===summary.length-1?"bold":"normal");doc.text(a,120,y);doc.text(b,right,y,{align:"right"});y+=6;});
-    y+=5; doc.setFont(undefined,"normal"); doc.setFontSize(8);
-    if(c.unpriced.length) doc.text("Final quotation value is subject to confirmation because one or more items require pricing.",left,y,{maxWidth:178}),y+=10;
-    doc.text("Pricing and availability are subject to HomeClinicStore confirmation. This document is a QUOTATION, not a tax invoice.",left,y,{maxWidth:178}); y+=10;
-    if(cust.notes) doc.text("Notes: "+cust.notes,left,y,{maxWidth:178});
-    doc.save(ref+".pdf");
-    window.HCSAnalytics?.event?.("quote_pdf_generated",{quote_reference:ref,item_count:cart.length});
+    doc.setFontSize(9);
+    totals.forEach(([a,b],idx)=>{
+      const isTotal=idx===totals.length-1;
+      if(isTotal){doc.setFillColor(16,42,76);doc.roundedRect(108,y-1,87,10,2,2,"F");doc.setTextColor(255,255,255);doc.setFont(undefined,"bold");}
+      else{doc.setTextColor(25,34,42);doc.setFont(undefined,idx===4?"bold":"normal");}
+      doc.text(a,112,y+5);doc.text(b,191,y+5,{align:"right"});y+=10;
+    });
+
+    doc.setTextColor(50,62,70);doc.setFont(undefined,"normal");doc.setFontSize(7.8);y+=4;
+    if(c.unpriced.length){doc.text("One or more items require final price confirmation; the final quotation value may change.",left,y,{maxWidth:180});y+=8;}
+    doc.text("Pricing, stock and delivery are subject to HomeClinicStore confirmation. This document is a QUOTATION and is not a tax invoice.",left,y,{maxWidth:180});y+=9;
+    if(!business.vatNumber){doc.text("VAT is calculated at the configured South African rate for quotation purposes. No VAT registration number is represented on this document.",left,y,{maxWidth:180});y+=10;}
+    if(cust.notes){doc.setFont(undefined,"bold");doc.text("Customer notes",left,y);doc.setFont(undefined,"normal");y+=5;doc.text(cust.notes,left,y,{maxWidth:180});y+=12;}
+
+    if(signed && sig){
+      if(y>235)newPage();
+      doc.setDrawColor(210,218,222);doc.roundedRect(left,y,85,32,3,3,"S");
+      doc.setTextColor(25,34,42);doc.setFont(undefined,"bold");doc.setFontSize(8);doc.text("CUSTOMER ACCEPTANCE",left+4,y+6);
+      try{doc.addImage(sig,"PNG",left+5,y+8,55,16);}catch{}
+      doc.setFont(undefined,"normal");doc.setFontSize(7);doc.text("Signed electronically · "+new Date().toLocaleString("en-ZA"),left+4,y+28);
+      y+=38;
+    }
+
+    if(y>270)newPage();
+    doc.setDrawColor(215,222,226);doc.line(left,282,right,282);
+    doc.setFontSize(7);doc.setTextColor(100,112,119);
+    doc.text(business.name+" · "+business.email+" · "+business.phoneDisplay,left,288);
+    doc.text(ref,right,288,{align:"right"});
+
+    return {doc,ref,blob:doc.output("blob")};
+  }
+
+  async function generatePdf(){
+    try{
+      const q=await buildQuotePdf({signed:false});q.doc.save(q.ref+".pdf");
+      window.HCSAnalytics?.event?.("quote_pdf_generated",{quote_reference:q.ref,item_count:cart.length});
+    }catch(e){if(e.message==="EMPTY_CART")alert("Add at least one product before generating a quotation.");else if(e.message==="NO_PDF")alert("PDF generator could not load. Please use Print Quote.");}
+  }
+
+  async function shareSignedQuote(){
+    try{
+      const q=await buildQuotePdf({signed:true});
+      const file=new File([q.blob],q.ref+"-signed.pdf",{type:"application/pdf"});
+      const text="Signed HomeClinicStore quotation "+q.ref+". Please return this accepted quotation to HomeClinicStore.";
+      if(navigator.canShare?.({files:[file]}) && navigator.share){
+        await navigator.share({title:"Signed HomeClinicStore quotation "+q.ref,text,files:[file]});
+      }else{
+        q.doc.save(q.ref+"-signed.pdf");
+        window.open("https://wa.me/"+business.whatsapp+"?text="+encodeURIComponent(text+" The signed PDF has been downloaded; please attach it to this WhatsApp chat."),"_blank","noopener,noreferrer");
+      }
+      window.HCSAnalytics?.event?.("signed_quote_shared",{quote_reference:q.ref});
+    }catch(e){if(!["AbortError","NOT_SIGNED"].includes(e.name)&&e.message!=="NOT_SIGNED"&&e.message!=="EMPTY_CART")console.error(e);if(e.message==="EMPTY_CART")alert("Add at least one product before sharing a quotation.");}
+  }
+
+  async function emailSignedQuote(){
+    try{
+      const q=await buildQuotePdf({signed:true});
+      q.doc.save(q.ref+"-signed.pdf");
+      const to=business.quoteReturnEmail||"info@homeclinicstore.co.za";
+      const subject="Signed quotation "+q.ref;
+      const body="Hello HomeClinicStore,%0D%0A%0D%0APlease find my signed quotation "+encodeURIComponent(q.ref)+" attached.%0D%0A%0D%0AThe signed PDF has been downloaded to this device; please attach it to this email before sending.%0D%0A";
+      window.location.href="mailto:"+encodeURIComponent(to)+"?subject="+encodeURIComponent(subject)+"&body="+body;
+      window.HCSAnalytics?.event?.("signed_quote_email",{quote_reference:q.ref});
+    }catch(e){if(e.message==="EMPTY_CART")alert("Add at least one product before emailing a quotation.");}
   }
 
   function printQuote(){
-    if(!cart.length){ alert("Add at least one product before printing a quotation."); return; }
-    const ref=quoteRef(), c=commercial(), cust=customer();
-    const rows=cart.map(i=>'<tr><td>'+i.brand+' '+i.name+'</td><td>'+i.qty+'</td><td>'+(Number.isFinite(i.price)?money(i.price):"TBC")+'</td><td>'+(Number.isFinite(i.price)?money(i.price*i.qty):"TBC")+'</td></tr>').join("");
-    const w=window.open("","_blank","noopener,noreferrer");
-    if(!w) return;
-    w.document.write('<!doctype html><html><head><title>'+ref+'</title><style>body{font:14px Arial;color:#17212b;padding:28px}header{border-bottom:3px solid #102a4c;padding-bottom:16px;margin-bottom:24px}h1{color:#102a4c}table{width:100%;border-collapse:collapse;margin:20px 0}th,td{padding:10px;border-bottom:1px solid #ddd;text-align:left}.totals{margin-left:auto;width:320px}.totals div{display:flex;justify-content:space-between;padding:6px 0}.total{font-weight:700;font-size:18px;border-top:2px solid #102a4c}.note{font-size:12px;color:#53606a;margin-top:28px}@media print{body{padding:0}}</style></head><body><header><h1>HCS | QUOTATION</h1><b>'+ref+'</b><p>'+business.name+'<br>'+business.address+'<br>'+business.email+' · '+business.phoneDisplay+'</p></header><p><b>Customer:</b> '+[cust.company,cust.contact,cust.email,cust.phone,cust.address].filter(Boolean).join(" · ")+'</p><table><thead><tr><th>Product</th><th>Qty</th><th>Unit</th><th>Line total</th></tr></thead><tbody>'+rows+'</tbody></table><div class="totals"><div><span>Subtotal</span><b>'+(c.priced.length?money(fromCents(c.subtotalCents)):"TBC")+'</b></div><div><span>Discount</span><b>'+money(fromCents(c.discountCents))+'</b></div><div><span>Delivery</span><b>'+(c.deliveryConfirmed?money(fromCents(c.deliveryCents)):"TBC")+'</b></div><div><span>VAT</span><b>'+(business.vatRegistered?money(fromCents(c.vatCents)):"Not applied")+'</b></div><div class="total"><span>Total</span><b>'+(c.priced.length?money(fromCents(c.totalCents))+(c.unpriced.length?" + TBC":""):"TBC")+'</b></div></div><p class="note">Valid until '+expiry()+'. Pricing and availability are subject to confirmation. This document is a quotation, not a tax invoice.</p></body></html>');
-    w.document.close(); w.focus(); setTimeout(()=>w.print(),250);
+    if(!cart.length){alert("Add at least one product before printing a quotation.");return;}
+    const ref=quoteRef(),c=commercial(),cust=customer(),vatRate=Math.round(Number(business.vatRate||.15)*100);
+    const rows=cart.map(i=>'<tr><td><b>'+i.brand+'</b><br>'+i.name+'</td><td>'+i.qty+'</td><td>'+(Number.isFinite(i.price)?money(i.price):"TBC")+'</td><td>'+(Number.isFinite(i.price)?money(i.price*i.qty):"TBC")+'</td></tr>').join("");
+    const w=window.open("","_blank","noopener,noreferrer");if(!w)return;
+    w.document.write('<!doctype html><html><head><title>'+ref+'</title><style>@page{size:A4;margin:14mm}*{box-sizing:border-box}body{font:12px Arial;color:#17212b;margin:0}.head{display:flex;justify-content:space-between;align-items:flex-start;background:#102a4c;color:#fff;padding:18px 20px}.head img{width:210px;max-height:48px;object-fit:contain;object-position:left center;filter:brightness(0) invert(1)}.quote{text-align:right}.quote h1{margin:0 0 6px;font-size:22px}.meta{display:grid;grid-template-columns:1fr 1fr;gap:28px;padding:22px 0}.box{background:#f4f7f8;padding:14px;border-radius:8px}table{width:100%;border-collapse:collapse;margin:18px 0}th{background:#102a4c;color:#fff}th,td{padding:9px;border-bottom:1px solid #dfe5e8;text-align:left}th:nth-child(n+2),td:nth-child(n+2){text-align:right}.totals{margin-left:auto;width:340px}.totals div{display:flex;justify-content:space-between;padding:6px 8px}.total{background:#102a4c;color:#fff;font-weight:700;font-size:15px}.note{font-size:10px;color:#53606a;margin-top:24px;line-height:1.5}.footer{margin-top:30px;border-top:1px solid #d8dfe2;padding-top:10px;font-size:9px;color:#71808a}@media print{button{display:none}}</style></head><body><header class="head"><img src="hcs-logo.png" alt="HomeClinicStore"><div class="quote"><h1>QUOTATION</h1><b>'+ref+'</b><br>'+new Date().toLocaleDateString("en-ZA")+'</div></header><section class="meta"><div><b>'+business.name+'</b><br>'+business.address+'<br>'+business.email+'<br>'+business.phoneDisplay+'</div><div class="box"><b>Customer</b><br>'+([cust.company,cust.contact,cust.email,cust.phone,cust.address].filter(Boolean).join("<br>")||"Customer details not supplied")+'</div></section><table><thead><tr><th>Product</th><th>Qty</th><th>Unit price</th><th>Line total</th></tr></thead><tbody>'+rows+'</tbody></table><div class="totals"><div><span>Subtotal</span><b>'+money(fromCents(c.subtotalCents))+'</b></div><div><span>Discount</span><b>'+(c.discountCents?"-"+money(fromCents(c.discountCents)):money(0))+'</b></div><div><span>Delivery</span><b>'+(c.deliveryConfirmed?money(fromCents(c.deliveryCents)):"TBC")+'</b></div><div><span>Net excl. VAT</span><b>'+money(fromCents(c.netExVatCents))+'</b></div><div><span>VAT '+vatRate+'%</span><b>'+money(fromCents(c.vatCents))+'</b></div><div class="total"><span>TOTAL INCL. VAT</span><b>'+money(fromCents(c.totalCents))+'</b></div></div><p class="note">Valid until '+expiry()+'. Pricing, availability and delivery are subject to confirmation. This is a quotation, not a tax invoice.'+(!business.vatNumber?' No VAT registration number is represented on this document.':'')+'</p><div class="footer">'+business.name+' · '+business.email+' · '+business.phoneDisplay+' · '+ref+'</div></body></html>');
+    w.document.close();w.focus();setTimeout(()=>w.print(),250);
   }
 
   ["#cart-toggle","#mobile-cart-toggle"].forEach(s=>$(s)?.addEventListener("click",openCart));
@@ -185,7 +302,9 @@
   $("#clear-cart")?.addEventListener("click",()=>{cart=[];save();});
   $("#generate-quote")?.addEventListener("click",generatePdf);
   $("#print-quote")?.addEventListener("click",printQuote);
+  $("#share-signed-quote")?.addEventListener("click",shareSignedQuote);
+  $("#email-signed-quote")?.addEventListener("click",emailSignedQuote);
   ["#delivery-mode","#delivery-amount","#discount-type","#discount-value"].forEach(s=>$(s)?.addEventListener("input",renderCart));
   document.addEventListener("keydown",e=>{if(e.key==="Escape")closeCart();});
-  enhanceProducts(); renderCart();
+  initSignaturePad(); enhanceProducts(); renderCart();
 })();
