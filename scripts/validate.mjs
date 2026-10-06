@@ -50,6 +50,9 @@ const checks = [
   ['Quote cart present', /id="cart-panel"/.test(shop) && /Generate Quote PDF/.test(shop)],
   ['Commerce module loaded', /commerce\.js/.test(shop)],
   ['Configurable VAT rate', /vatRate:\s*0\.15/.test(businessConfig)],
+  ['VAT applied to quotes', /applyVatToQuotes:\s*true/.test(businessConfig) && /TOTAL INCL\. VAT/.test(commerceJs)],
+  ['Professional quote branding', /addImage\(logo/.test(commerceJs) && /QUOTATION/.test(commerceJs)],
+  ['Signed quote workflow', /signature-pad/.test(shop) && /navigator\.share/.test(commerceJs) && /quoteReturnEmail/.test(commerceJs)],
   ['No legacy HCS email', !/infor@homeclinicstore\.co\.za|info@homeclinicstore\.co\.za/i.test(html + shop + js + shopJs + commerceJs + businessConfig)],
 ];
 
