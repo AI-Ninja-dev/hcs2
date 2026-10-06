@@ -42,7 +42,7 @@ const expandedCatalogue = [
 
   { brand: "Rossmax", model: "Z5 PARR BP Monitor", category: "blood-pressure", label: "Blood pressure", detail: "Automatic upper-arm monitor with PARR arrhythmia screening and Bluetooth connectivity.", image: "images/drive/rossmax-z5.jpg" },
   { brand: "Rossmax", model: "X5 BT BP Monitor", category: "blood-pressure", label: "Blood pressure", detail: "Bluetooth-connected upper-arm monitor with PARR arrhythmia screening.", image: "images/drive/rossmax-x5.webp" },
-  { brand: "Rossmax", model: "X3 BT BP Monitor", category: "blood-pressure", label: "Blood pressure", detail: "Connected upper-arm home blood-pressure monitor compatible with Rossmax Healthstyle workflows.", image: "images/drive/rossmax-x3.jpg" },
+  { brand: "Rossmax", model: "X3 Automatic BP Monitor", category: "blood-pressure", label: "Blood pressure", detail: "Automatic upper-arm home blood-pressure monitor with movement detection, cuff detection and multi-user memory.", image: "images/drive/rossmax-x3.jpg" },
   { brand: "Rossmax", model: "SB200 Pulse Oximeter", category: "heart", label: "Pulse & oxygen", detail: "Fingertip SpO₂ and pulse monitoring with Rossmax Artery Check Technology.", image: "images/drive/rossmax-sb200.webp" },
   { brand: "Rossmax", model: "SA300 Handheld Pulse Oximeter", category: "heart", label: "Pulse & oxygen", detail: "Handheld SpO₂ and pulse monitor with colour display and optional probe support.", image: "images/drive/rossmax-sa300.webp" },
   { brand: "Rossmax", model: "HC700 BT Thermometer", category: "home-equipment", label: "Temperature", detail: "Bluetooth non-contact telephoto thermometer with one-second measurement.", image: "images/drive/rossmax-hc700bt-lcd.webp" },
