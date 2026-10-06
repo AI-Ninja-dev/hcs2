@@ -374,6 +374,29 @@
     </div>
     <div id="cart-items" class="cart-items"></div>
     <p id="cart-empty" class="cart-empty">Your cart is empty. Add products to build a quotation.</p>
+    <div class="quote-commercial-controls" id="quote-commercial-controls">
+      <label>Delivery
+        <select id="delivery-mode">
+          <option value="confirm">Delivery price to be confirmed</option>
+          <option value="collection">Collection</option>
+          <option value="local">Local delivery</option>
+          <option value="courier">Courier</option>
+        </select>
+      </label>
+      <label>Delivery amount (R)
+        <input id="delivery-amount" type="number" min="0" step="0.01" inputmode="decimal" placeholder="Only if confirmed" />
+      </label>
+      <label>Discount
+        <select id="discount-type">
+          <option value="none">No discount</option>
+          <option value="percent">Percentage</option>
+          <option value="fixed">Fixed rand</option>
+        </select>
+      </label>
+      <label>Discount value
+        <input id="discount-value" type="number" min="0" step="0.01" inputmode="decimal" value="0" />
+      </label>
+    </div>
     <div class="cart-summary" id="cart-summary">
       <div><span>Subtotal</span><strong id="cart-subtotal">To be confirmed</strong></div>
       <div><span>Discount</span><strong id="cart-discount">R 0.00</strong></div>
