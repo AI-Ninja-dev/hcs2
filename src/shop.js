@@ -39,7 +39,7 @@ if ("IntersectionObserver" in window) {
 
 const expandedCatalogue = [
   { brand: "Yuwell", model: "Anytime 5 Pro CGM", category: "diabetes", label: "CGM", detail: "Continuous glucose monitoring option for home diabetes management and trend tracking.", image: "images/products/yuwell-anytime-5pro.webp" },
-  { brand: "Yuwell", model: "YX301 Pulse Oximeter", category: "heart", label: "Pulse & oxygen", detail: "Fingertip SpO₂ and pulse-rate spot checks for everyday home monitoring.", image: "https://www.medical-implements.com/photo/pl19282462-yuwell_oximeter_yx301_finger_clip_type_blood_oxygen_saturation_pulse_detector_color_lcd_display.jpg" },
+  { brand: "Yuwell", model: "YX301 Pulse Oximeter", category: "heart", label: "Pulse & oxygen", detail: "Fingertip SpO₂ and pulse-rate spot checks for everyday home monitoring.", image: "images/products/yuwell-pulse-oximeter.webp" },
   { brand: "Yuwell", model: "5L Oxygen Concentrator", category: "home-equipment", label: "Respiratory", detail: "Home oxygen-concentrator range for prescribed oxygen therapy; exact Yuwell model confirmed before order.", image: "https://www.emergency-trolley.com/photo/pl13947762-yuwell_brand_5l_medical_oxygen_concentrator_flow_93_oxygen_generator_machine.jpg" },
   { brand: "Yuwell", model: "M102 Mesh Nebuliser", category: "home-equipment", label: "Respiratory", detail: "Compact mesh-nebuliser option for prescribed inhalation therapy at home.", image: "https://down-sg.img.susercontent.com/file/sg-11134208-82623-mjta1p8w1czk40" },
   { brand: "Yuwell", model: "Auto CPAP", category: "home-equipment", label: "Sleep & respiratory", detail: "Yuwell positive-airway-pressure equipment for prescribed home sleep-therapy use.", image: "https://s11.gifyu.com/images/SAy66.jpg" },
@@ -52,9 +52,6 @@ const expandedCatalogue = [
   { brand: "Rossmax", model: "X9 BT BP Monitor", category: "blood-pressure", label: "Blood pressure", detail: "Connected blood-pressure monitoring with expanded arrhythmia detection features.", image: "https://www.proalergiky.cz/CMTrade/media/content/produkty_obrazky/Rossmax_X9_1.jpg" },
   { brand: "Rossmax", model: "SB200 Pulse Oximeter", category: "heart", label: "Pulse & oxygen", detail: "Fingertip SpO₂ and pulse monitoring with Rossmax Artery Check Technology.", image: "images/drive/rossmax-sb200.webp" },
   { brand: "Rossmax", model: "SA300 Handheld Pulse Oximeter", category: "heart", label: "Pulse & oxygen", detail: "Handheld SpO₂ and pulse monitor with colour display and optional probe support.", image: "images/drive/rossmax-sa300.webp" },
-  { brand: "Rossmax", model: "SA310 Handheld Pulse Oximeter", category: "heart", label: "Pulse & oxygen", detail: "Handheld pulse-oximetry option with large memory capacity for repeated monitoring.", image: "https://www.medigenix.co.uk/user/products/large/Rossmax-handheld-pulse-oximeter-SA310.jpg" },
-  { brand: "Rossmax", model: "SB220 Pulse Oximeter", category: "heart", label: "Pulse & oxygen", detail: "Compact fingertip oxygen-saturation and pulse-rate monitoring for home use.", image: "https://www.herculife.com/image/cache/catalog/Products/rossmax-sb220-500x500.jpg" },
-  { brand: "Rossmax", model: "SD100 Pulse Oximeter", category: "heart", label: "Pulse & oxygen", detail: "Simple fingertip SpO₂ and pulse-rate spot-check monitor.", image: "images/catalog/pulse-oximeter-sb210.webp" },
   { brand: "Rossmax", model: "HC700 BT Thermometer", category: "home-equipment", label: "Temperature", detail: "Bluetooth non-contact telephoto thermometer with one-second measurement.", image: "images/drive/rossmax-hc700bt-lcd.webp" },
   { brand: "Rossmax", model: "RA600 Ear Thermometer", category: "home-equipment", label: "Temperature", detail: "Infrared ear thermometer for quick home temperature measurement.", image: "https://yalladealnow.com/cdn/shop/files/62138b7bab60fed8647a1499_rossmax-infrared-ear-thermometer-ra600.png?v=1745838996&width=1200" },
   { brand: "Rossmax", model: "HA500 Temple Thermometer", category: "home-equipment", label: "Temperature", detail: "Non-contact temple thermometer with rapid one-second measurement.", image: "https://ecombe.nahdionline.com/media/catalog/product/r/o/rossmax-non-contact-digital-thermometer-ha500-0kjpg.jpg" },
@@ -67,14 +64,6 @@ const expandedCatalogue = [
   { brand: "Rossmax", model: "NL100 Piston Nebuliser", category: "home-equipment", label: "Respiratory", detail: "Compressor/piston nebuliser for prescribed respiratory therapy at home.", image: "images/products/yuwell-403t.webp" },
 
   { brand: "CONTEC", model: "CONTEC08C-BT BP Monitor", category: "blood-pressure", label: "Blood pressure", detail: "Bluetooth electronic sphygmomanometer for home NIBP measurement with stored-data transfer.", image: "images/catalog/bp-z5.jpg" },
-  { brand: "CONTEC", model: "CMS50D-BT Pulse Oximeter", category: "heart", label: "Pulse & oxygen", detail: "Bluetooth fingertip pulse oximeter for SpO₂ and pulse-rate monitoring in the home.", image: "https://apteczka24.pl/img/products/24/13/5/9_max.jpg" },
-  { brand: "CONTEC", model: "CMS50D+ Pulse Oximeter", category: "heart", label: "Pulse & oxygen", detail: "Portable fingertip pulse oximeter with SpO₂, pulse, waveform and data-storage functions.", image: "https://static-data2.manualslib.com/product-images/c54/2005793/contec-cms50d-.jpg" },
-  { brand: "CONTEC", model: "CMS50D Pulse Oximeter", category: "heart", label: "Pulse & oxygen", detail: "Compact fingertip SpO₂ and pulse-rate monitor for straightforward home checks.", image: "https://cdn01.pharmeasy.in/dam/products_otc/R53764/contec-pulse-oximeter-cms50d-3-1671742399.jpg" },
-  { brand: "CONTEC", model: "CMS50E Pulse Oximeter", category: "heart", label: "Pulse & oxygen", detail: "Rechargeable pulse oximeter with data storage and real-time data transmission.", image: "https://cdn11.bigcommerce.com/s-x3ki4mm/images/stencil/1500x1500/products/3227/4392/CMS50EA_Fingertip_Pulse_Oximeter_Spo2_Monitor_OLED_USB_Software_Alarm___90480.1588174759.jpg?c=2&imbypass=on" },
-  { brand: "CONTEC", model: "CMS50EW Pulse Oximeter", category: "heart", label: "Pulse & oxygen", detail: "Wireless fingertip pulse oximeter with memory and configurable display.", image: "https://www.contecmed.com/Cloud/contecmed/1733922426409431040.jpg" },
-  { brand: "CONTEC", model: "CMS50ED Pulse Oximeter", category: "heart", label: "Pulse & oxygen", detail: "Rechargeable fingertip SpO₂ and pulse monitor for family and community use.", image: "https://www.medicalexpo.com/images_me/photo-g/68095-17745949.jpg" },
-  { brand: "CONTEC", model: "CMS50I Pulse Oximeter", category: "heart", label: "Pulse & oxygen", detail: "Rechargeable pulse oximeter with perfusion-index display, memory and wired data upload.", image: "https://m.media-amazon.com/images/I/61oIhfySYuL._AC_SX679_.jpg" },
-  { brand: "CONTEC", model: "CMS50L Pulse Oximeter", category: "heart", label: "Pulse & oxygen", detail: "Simple home pulse oximeter with SpO₂, pulse rate and audible readout support.", image: "https://www.suloshanhealthcare.com/images/product/1676395703contec_Pulse%20Oximetter_cms50d-solushan-health-care-1.jpg" },
   { brand: "CONTEC", model: "OC30 Oxygen Concentrator", category: "home-equipment", label: "Respiratory", detail: "Mobile oxygen concentrator designed for family and community oxygen supply, with alarms and nebulisation support.", image: "images/products/yuwell-10l-oxygen.webp" }
 ];
 
@@ -96,15 +85,8 @@ function injectExpandedCatalogue() {
     article.dataset.shopBrand = product.brand.toLowerCase();
     article.dataset.shopSearch = [product.brand, product.model, product.label, product.detail].join(" ").toLowerCase();
 
-    const fallbackImages = {
-      diabetes: "images/catalog/glucometer.webp",
-      "blood-pressure": "images/catalog/bp-z5.jpg",
-      heart: "images/catalog/pulse-oximeter-sb210.webp",
-      "home-equipment": "images/products/yuwell-403t.webp",
-    };
-    const mediaSrc = product.image || fallbackImages[product.category] || "hcs-logo.png";
-    const fallbackSrc = fallbackImages[product.category] || "hcs-logo.png";
-    const media = '<img src="' + mediaSrc + '" data-fallback-src="' + fallbackSrc + '" alt="' + product.brand + " " + product.model + '" width="640" height="640" loading="lazy" decoding="async" />';
+    const mediaSrc = product.image;
+    const media = '<img class="shop-product-isolated" src="' + mediaSrc + '" alt="' + product.brand + " " + product.model + '" width="640" height="640" loading="lazy" decoding="async" />';
 
     article.innerHTML =
       '<div class="shop-launch-media"><span>' + product.label + "</span>" + media + "</div>" +
@@ -131,22 +113,16 @@ function injectExpandedCatalogue() {
 
   function ensureShopImages() {
     document.querySelectorAll(".shop-launch-media img").forEach((img) => {
-      const card = img.closest("[data-shop-category]");
-      const category = card?.dataset.shopCategory || "";
-      const fallbackImages = {
-        diabetes: "images/catalog/glucometer.webp",
-        "blood-pressure": "images/catalog/bp-z5.jpg",
-        heart: "images/catalog/pulse-oximeter-sb210.webp",
-        "home-equipment": "images/products/yuwell-403t.webp",
-      };
-      const fallback = img.dataset.fallbackSrc || fallbackImages[category] || "hcs-logo.png";
       img.addEventListener("error", () => {
-        if (img.dataset.fallbackApplied === "true") {
-          img.src = "hcs-logo.png";
-          return;
+        const media = img.closest(".shop-launch-media");
+        img.remove();
+        media?.classList.add("image-unavailable");
+        if (media && !media.querySelector(".shop-image-unavailable")) {
+          const note = document.createElement("small");
+          note.className = "shop-image-unavailable";
+          note.textContent = "Product image being updated";
+          media.appendChild(note);
         }
-        img.dataset.fallbackApplied = "true";
-        img.src = fallback;
       }, { once: true });
     });
   }
