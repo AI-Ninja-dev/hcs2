@@ -2279,3 +2279,41 @@ dialog dt {
 .service-capture .btn{flex-shrink:0;background:#fff;color:#173b56}
 @media(max-width:900px){.caregrid-depth{grid-template-columns:1fr}.caregrid-capabilities,.service-online-panel,.service-scope{grid-template-columns:1fr}.caregrid-capabilities ul{grid-template-columns:1fr 1fr}.service-capture{align-items:flex-start;flex-direction:column}}
 @media(max-width:620px){.caregrid-capabilities{padding:25px}.caregrid-capabilities ul,.service-online-steps{grid-template-columns:1fr}.caregrid-simple h3,.service-online-panel h3,.service-scope h3,.service-capture h3{font-size:24px}.service-capture{padding:24px}}
+
+
+/* Product image isolation and duplicate-safe presentation */
+.shop-launch-media,
+.shop-launch-hero-card,
+.shop-cgm-launch-product,
+.minimal-cgm-device{
+  background:#fff;
+}
+.shop-launch-media img,
+.shop-launch-hero-card img,
+.shop-cgm-launch-product img,
+.minimal-cgm-device img,
+.product-card img,
+.product-visual img{
+  object-fit:contain;
+  background:transparent;
+  mix-blend-mode:multiply;
+}
+.shop-launch-media .shop-product-isolated{
+  width:76%;
+  height:250px;
+  object-fit:contain;
+  background:transparent;
+  mix-blend-mode:multiply;
+  filter:contrast(1.04) saturate(.96);
+}
+.shop-launch-media.image-unavailable{
+  background:linear-gradient(145deg,#fbfcfb,#eef1ef);
+}
+.shop-image-unavailable{
+  max-width:16rem;
+  padding:1rem;
+  text-align:center;
+  color:#758078;
+  font-size:.78rem;
+  line-height:1.45;
+}
