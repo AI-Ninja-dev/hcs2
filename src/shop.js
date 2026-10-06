@@ -39,8 +39,6 @@ if ("IntersectionObserver" in window) {
 
 const expandedCatalogue = [
   { brand: "Yuwell", model: "Anytime 5 Pro CGM", category: "diabetes", label: "CGM", detail: "Continuous glucose monitoring option for home diabetes management and trend tracking.", image: "images/products/yuwell-anytime-5pro.webp" },
-  { brand: "Yuwell", model: "YX301 Pulse Oximeter", category: "heart", label: "Pulse & oxygen", detail: "Fingertip SpO₂ and pulse-rate spot checks for everyday home monitoring.", image: "images/products/yuwell-pulse-oximeter.webp" },
-  { brand: "Yuwell", model: "BiPAP / Bi-Level PAP", category: "home-equipment", label: "Sleep & respiratory", detail: "Yuwell bi-level positive-airway-pressure range for supported prescribed home-care requirements.", image: "images/catalog/cpap.png" },
 
   { brand: "Rossmax", model: "Z5 PARR BP Monitor", category: "blood-pressure", label: "Blood pressure", detail: "Automatic upper-arm monitor with PARR arrhythmia screening and Bluetooth connectivity.", image: "images/drive/rossmax-z5.jpg" },
   { brand: "Rossmax", model: "X5 BT BP Monitor", category: "blood-pressure", label: "Blood pressure", detail: "Bluetooth-connected upper-arm monitor with PARR arrhythmia screening.", image: "images/drive/rossmax-x5.webp" },
@@ -49,8 +47,6 @@ const expandedCatalogue = [
   { brand: "Rossmax", model: "SA300 Handheld Pulse Oximeter", category: "heart", label: "Pulse & oxygen", detail: "Handheld SpO₂ and pulse monitor with colour display and optional probe support.", image: "images/drive/rossmax-sa300.webp" },
   { brand: "Rossmax", model: "HC700 BT Thermometer", category: "home-equipment", label: "Temperature", detail: "Bluetooth non-contact telephoto thermometer with one-second measurement.", image: "images/drive/rossmax-hc700bt-lcd.webp" },
   { brand: "Rossmax", model: "HS200 BT+USB Glucose Meter", category: "diabetes", label: "Glucose", detail: "Bluetooth and USB blood-glucose monitoring system with fast testing and memory.", image: "images/drive/rossmax-hs200-device.webp" },
-  { brand: "Rossmax", model: "HS200 Glucose Meter", category: "diabetes", label: "Glucose", detail: "Blood-glucose monitoring system for routine home diabetes checks.", image: "images/catalog/glucometer.webp" },
-  { brand: "Rossmax", model: "HS200 Test Strips", category: "diabetes", label: "Consumables", detail: "Compatible Rossmax HS200 blood-glucose test strips; meter compatibility confirmed before supply.", image: "images/catalog/glucose-strips.jpg" },
   { brand: "Rossmax", model: "WF262 Body Fat Scale", category: "home-equipment", label: "Weight", detail: "Connected body-weight and body-composition tracking for home wellness monitoring.", image: "images/drive/rossmax-wf262.webp" },
 
 ];
