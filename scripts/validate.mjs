@@ -10,6 +10,8 @@ const required = [
   'src/commerce.js',
   'src/business-config.js',
   'src/hcs-favicon.svg',
+  'src/equipment.html',
+  'src/equipment.js',
 ];
 
 for (const file of required) await access(file, constants.R_OK);
@@ -21,8 +23,11 @@ const js = await readFile('src/app.js', 'utf8');
 const shopJs = await readFile('src/shop.js', 'utf8');
 const commerceJs = await readFile('src/commerce.js', 'utf8');
 const businessConfig = await readFile('src/business-config.js', 'utf8');
+const equipmentHtml = await readFile('src/equipment.html', 'utf8');
+const equipmentJs = await readFile('src/equipment.js', 'utf8');
 new Function(commerceJs);
 new Function(businessConfig);
+new Function(equipmentJs);
 
 const checks = [
   ['HTML lang attribute', /<html[^>]+lang="en"/i.test(html)],
@@ -54,6 +59,10 @@ const checks = [
   ['Professional quote branding', /addImage\(logo/.test(commerceJs) && /QUOTATION/.test(commerceJs)],
   ['Signed quote workflow', /signature-pad/.test(shop) && /navigator\.share/.test(commerceJs) && /quoteReturnEmail/.test(commerceJs)],
   ['No legacy HCS email', !/infor@homeclinicstore\.co\.za|info@homeclinicstore\.co\.za/i.test(html + shop + js + shopJs + commerceJs + businessConfig)],
+  ['Equipment lifecycle portal linked', /equipment\.html/.test(html) && /MY EQUIPMENT/i.test(equipmentHtml)],
+  ['Equipment registration workflow', /equipment-form/.test(equipmentHtml) && /equipment_registered/.test(equipmentJs)],
+  ['Lifecycle event workflow', /LIFECYCLE TIMELINE/.test(equipmentJs) && /Add lifecycle event/.test(equipmentJs)],
+  ['Certificate storage and download', /indexedDB/.test(equipmentJs) && /Download/.test(equipmentJs)],
 ];
 
 let failed = false;
