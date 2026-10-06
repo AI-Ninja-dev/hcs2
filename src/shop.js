@@ -96,9 +96,15 @@ function injectExpandedCatalogue() {
     article.dataset.shopBrand = product.brand.toLowerCase();
     article.dataset.shopSearch = [product.brand, product.model, product.label, product.detail].join(" ").toLowerCase();
 
-    const media = product.image
-      ? '<img src="' + product.image + '" alt="' + product.brand + " " + product.model + '" width="640" height="640" loading="lazy" decoding="async" />'
-      : '<div class="shop-catalog-placeholder" aria-hidden="true"><b>' + product.brand + '</b><span>' + product.model + "</span></div>";
+    const fallbackImages = {
+      diabetes: "images/catalog/glucometer.webp",
+      "blood-pressure": "images/catalog/bp-z5.jpg",
+      heart: "images/catalog/pulse-oximeter-sb210.webp",
+      "home-equipment": "images/products/yuwell-403t.webp",
+    };
+    const mediaSrc = product.image || fallbackImages[product.category] || "hcs-logo.png";
+    const fallbackSrc = fallbackImages[product.category] || "hcs-logo.png";
+    const media = '<img src="' + mediaSrc + '" data-fallback-src="' + fallbackSrc + '" alt="' + product.brand + " " + product.model + '" width="640" height="640" loading="lazy" decoding="async" />';
 
     article.innerHTML =
       '<div class="shop-launch-media"><span>' + product.label + "</span>" + media + "</div>" +
@@ -122,6 +128,30 @@ function injectExpandedCatalogue() {
       '<button type="button" data-brand-filter="contec" aria-pressed="false">CONTEC</button>';
     filters.parentElement?.appendChild(brandGroup);
   }
+
+  function ensureShopImages() {
+    document.querySelectorAll(".shop-launch-media img").forEach((img) => {
+      const card = img.closest("[data-shop-category]");
+      const category = card?.dataset.shopCategory || "";
+      const fallbackImages = {
+        diabetes: "images/catalog/glucometer.webp",
+        "blood-pressure": "images/catalog/bp-z5.jpg",
+        heart: "images/catalog/pulse-oximeter-sb210.webp",
+        "home-equipment": "images/products/yuwell-403t.webp",
+      };
+      const fallback = img.dataset.fallbackSrc || fallbackImages[category] || "hcs-logo.png";
+      img.addEventListener("error", () => {
+        if (img.dataset.fallbackApplied === "true") {
+          img.src = "hcs-logo.png";
+          return;
+        }
+        img.dataset.fallbackApplied = "true";
+        img.src = fallback;
+      }, { once: true });
+    });
+  }
+
+  ensureShopImages();
 
   if (!document.getElementById("shop-catalog-runtime-styles")) {
     const style = document.createElement("style");
