@@ -40,6 +40,8 @@
       const product=productFromCard(card);
       const body=$(".shop-launch-body",card);
       if(!body) return;
+      const statusPrice=$(".shop-card-status span",card);
+      if(statusPrice) statusPrice.textContent = product.price==null ? "Request price" : money(product.price);
       const row=document.createElement("div");
       row.className="commerce-actions";
       row.innerHTML='<div class="commerce-price"><strong>'+ (product.price==null ? "Request price" : money(product.price)) +'</strong><small>'+ (product.price==null ? "Price confirmed in quotation" : (business.vatRegistered ? "VAT treatment shown in cart" : "VAT not applied")) +'</small></div><button class="add-cart-btn" type="button">Add to cart</button>';
