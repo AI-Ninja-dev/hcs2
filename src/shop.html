@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Shop HomeClinicStore for the flagship Yuwell Anytime CT3 CGM and carefully selected home medical devices for diabetes, blood-pressure monitoring, pulse oximetry, respiratory care and everyday home monitoring in South Africa." />
   <meta name="theme-color" content="#f7f8f6" />
-  <link rel="icon" href="hcs-logo.png" type="image/png" />
+  <link rel="icon" href="hcs-favicon.svg" type="image/svg+xml" />\n  <link rel="apple-touch-icon" href="hcs-favicon.svg" />
   <title>Shop Yuwell Anytime CT3 & Home Health Devices | HomeClinicStore</title>
   <link rel="stylesheet" href="styles.css" />
-  <script>window.HCS_GA_ID = "G-XXXXXXXXXX";</script>\n  <script defer src="analytics.js"></script>\n  <script defer src="shop.js"></script>
+  <script>window.HCS_GA_ID = "G-XXXXXXXXXX";</script>\n  <script defer src="business-config.js"></script>\n  <script defer src="analytics.js"></script>\n  <script defer src="https://cdn.jsdelivr.net/npm/jspdf@2.5.2/dist/jspdf.umd.min.js"></script>\n  <script defer src="shop.js"></script>
 </head>
 <body id="top" class="shop-launch">
   <a class="skip-link" href="#shop-main">Skip to products</a>
@@ -360,12 +360,52 @@
         <span class="social-icon" title="YouTube" aria-label="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12c0-2.4-.2-4.1-.5-5-.2-.7-.8-1.2-1.5-1.4C18.5 5.2 15.7 5 12 5s-6.5.2-8 .6C3.3 5.8 2.7 6.3 2.5 7 2.2 7.9 2 9.6 2 12s.2 4.1.5 5c.2.7.8 1.2 1.5 1.4 1.5.4 4.3.6 8 .6s6.5-.2 8-.6c.7-.2 1.3-.7 1.5-1.4.3-.9.5-2.6.5-5Zm-12.2 3.4V8.6l5.8 3.4-5.8 3.4Z"/></svg></span>
       </div>
       <div class="footer-contact-line">
-        <a href="tel:+27678042273">067 804 2273</a>
-        <a href="mailto:infor@homeclinicstore.co.za">infor@homeclinicstore.co.za</a>
+        <a href="tel:+27678042273">+27 67 804 2273</a>
+        <a href="mailto:info@homeclinic.co.za">info@homeclinic.co.za</a>
         <span>16 Koeberg Road, Milnerton, Cape Town</span>
       </div>
     </div>
   </footer>
+
+  <aside class="cart-panel" id="cart-panel" aria-hidden="true" aria-label="Shopping cart and quotation">
+    <div class="cart-panel-head">
+      <div><span class="eyebrow">YOUR QUOTE CART</span><h2>Cart & quotation</h2></div>
+      <button class="cart-close" id="cart-close" type="button" aria-label="Close cart">×</button>
+    </div>
+    <div id="cart-items" class="cart-items"></div>
+    <p id="cart-empty" class="cart-empty">Your cart is empty. Add products to build a quotation.</p>
+    <div class="cart-summary" id="cart-summary">
+      <div><span>Subtotal</span><strong id="cart-subtotal">To be confirmed</strong></div>
+      <div><span>Discount</span><strong id="cart-discount">R 0.00</strong></div>
+      <div><span>Delivery</span><strong id="cart-delivery">To be confirmed</strong></div>
+      <div><span>VAT</span><strong id="cart-vat">Not applied</strong></div>
+      <div class="cart-total"><span>Total</span><strong id="cart-total">To be confirmed</strong></div>
+    </div>
+    <details class="quote-details" open>
+      <summary>Quotation details</summary>
+      <div class="quote-fields">
+        <label>Customer / company<input id="quote-company" autocomplete="organization" /></label>
+        <label>Contact person<input id="quote-contact" autocomplete="name" /></label>
+        <label>Email<input id="quote-email" type="email" inputmode="email" autocomplete="email" /></label>
+        <label>Telephone<input id="quote-phone" type="tel" inputmode="tel" autocomplete="tel" /></label>
+        <label class="quote-span">Delivery address<textarea id="quote-address" rows="2" autocomplete="street-address"></textarea></label>
+        <label class="quote-span">Notes<textarea id="quote-notes" rows="3"></textarea></label>
+      </div>
+    </details>
+    <div class="cart-actions">
+      <button class="btn btn-accent" id="generate-quote" type="button">Generate Quote PDF</button>
+      <button class="btn btn-light" id="print-quote" type="button">Print Quote</button>
+      <button class="text-link cart-clear" id="clear-cart" type="button">Clear cart</button>
+    </div>
+    <p class="cart-commercial-note">Pricing and availability are subject to HomeClinicStore confirmation. Generated documents are quotations, not tax invoices.</p>
+  </aside>
+  <button class="cart-scrim" id="cart-scrim" type="button" aria-label="Close cart"></button>
+
+  <nav class="mobile-commerce-bar" aria-label="Mobile shopping actions">
+    <a href="#products">Shop</a>
+    <button id="mobile-cart-toggle" type="button">Cart <span id="mobile-cart-count">0</span></button>
+    <a href="#request">Enquire</a>
+  </nav>
 
   <a class="floating-whatsapp" href="https://wa.me/27678042273?text=Hi%20HomeClinicStore%2C%20I%E2%80%99d%20like%20assistance%20with%20a%20product%20or%20service." target="_blank" rel="noopener noreferrer" aria-label="Chat with HomeClinicStore on WhatsApp">
     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 3.5A11.8 11.8 0 0 0 12.1 0C5.6 0 .3 5.3.3 11.8c0 2.1.5 4.1 1.6 5.9L.2 24l6.4-1.7a11.8 11.8 0 0 0 5.5 1.4h.1c6.5 0 11.8-5.3 11.8-11.8 0-3.2-1.2-6.1-3.5-8.4ZM12.2 21.7h-.1c-1.7 0-3.4-.5-4.9-1.3l-.4-.2-3.8 1 1-3.7-.2-.4a9.8 9.8 0 1 1 8.4 4.6Zm5.4-7.3c-.3-.1-1.8-.9-2.1-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-1.7-.8-2.9-1.5-4-3.4-.3-.5.3-.5.8-1.6.1-.2.1-.4 0-.6-.1-.1-.7-1.7-1-2.3-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.2-1.2 2.9s1.2 3.3 1.4 3.5c.2.2 2.4 3.7 5.9 5.2 2.2.9 3.1 1 4.2.8.7-.1 1.8-.7 2-1.5.3-.7.3-1.4.2-1.5-.1-.1-.3-.2-.6-.3Z"/></svg>
