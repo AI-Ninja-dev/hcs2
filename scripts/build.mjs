@@ -7,8 +7,8 @@ await rm('dist', { recursive: true, force: true });
 await mkdir('dist', { recursive: true });
 await cp('src', 'dist', { recursive: true });
 
-const assets = ['styles.css','app.js','analytics.js','business-config.js','shop.js','commerce.js'];
-for (const page of ['index.html','shop.html']) {
+const assets = ['styles.css','app.js','analytics.js','business-config.js','shop.js','commerce.js','equipment.js'];
+for (const page of ['index.html','shop.html','equipment.html']) {
   const path = 'dist/' + page;
   let html = await readFile(path, 'utf8');
   for (const asset of assets) {
