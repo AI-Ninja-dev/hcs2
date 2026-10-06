@@ -8,6 +8,7 @@ window.HCS_BUSINESS = Object.freeze({
   currency: "ZAR",
   vatRate: 0.15,
   vatRegistered: false,
+  applyVatToQuotes: true,
   quoteValidityDays: 14,
   defaultPriceVatTreatment: "inclusive",
   defaultDelivery: "Price to be confirmed",
