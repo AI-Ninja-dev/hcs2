@@ -7,6 +7,9 @@ const required = [
   'src/styles.css',
   'src/app.js',
   'src/shop.js',
+  'src/commerce.js',
+  'src/business-config.js',
+  'src/hcs-favicon.svg',
 ];
 
 for (const file of required) await access(file, constants.R_OK);
@@ -16,6 +19,10 @@ const shop = await readFile('src/shop.html', 'utf8');
 const css = await readFile('src/styles.css', 'utf8');
 const js = await readFile('src/app.js', 'utf8');
 const shopJs = await readFile('src/shop.js', 'utf8');
+const commerceJs = await readFile('src/commerce.js', 'utf8');
+const businessConfig = await readFile('src/business-config.js', 'utf8');
+new Function(commerceJs);
+new Function(businessConfig);
 
 const checks = [
   ['HTML lang attribute', /<html[^>]+lang="en"/i.test(html)],
@@ -37,6 +44,13 @@ const checks = [
   ['Shop warranty information', /WARRANTY/.test(shop)],
   ['Shop returns information', /RETURNS/.test(shop)],
   ['No downloadable enquiry flow', !html.includes('download-enquiry') && !shop.includes('download-enquiry') && !js.includes('download-enquiry') && !shopJs.includes('download-enquiry')],
+  ['Updated HCS email', html.includes('info@homeclinic.co.za') && shop.includes('info@homeclinic.co.za')],
+  ['International HCS phone', html.includes('+27 67 804 2273') && shop.includes('+27 67 804 2273')],
+  ['HCS favicon', html.includes('hcs-favicon.svg') && shop.includes('hcs-favicon.svg')],
+  ['Quote cart present', /id="cart-panel"/.test(shop) && /Generate Quote PDF/.test(shop)],
+  ['Commerce module loaded', /commerce\.js/.test(shop)],
+  ['Configurable VAT rate', /vatRate:\s*0\.15/.test(businessConfig)],
+  ['No legacy HCS email', !/infor@homeclinicstore\.co\.za|info@homeclinicstore\.co\.za/i.test(html + shop + js + shopJs + commerceJs + businessConfig)],
 ];
 
 let failed = false;
