@@ -2475,3 +2475,10 @@ html,body{max-width:100%;overflow-x:hidden}
 #caregrid .caregrid-process span,#caregrid .caregrid-ui-top>span{background:#d0e1f3;color:#173f72}
 #caregrid .chart-bars i,#caregrid .status-dot{background:#3b6eab}
 @media(max-width:700px){.caregrid-copy>.caregrid-brand-logo{width:240px}.caregrid-brand-link .caregrid-brand-logo{width:100px}}
+
+.caregrid-trademark{position:relative;display:inline-block;max-width:100%;vertical-align:middle}
+.caregrid-trademark>sup{position:absolute;top:23%;right:2%;font-size:9px;line-height:1;color:#173f72}
+.caregrid-copy>.caregrid-trademark{width:300px;margin-bottom:12px}
+.caregrid-copy>.caregrid-trademark>sup{font-size:14px}
+.caregrid-copy>.caregrid-trademark>.caregrid-brand-logo{width:100%;margin:0}
+@media(max-width:700px){.caregrid-copy>.caregrid-trademark{width:240px}}
