@@ -2,7 +2,7 @@ window.HCS_BUSINESS = Object.freeze({
   name: "HomeClinicStore",
   address: "16 Koeberg Road, Milnerton, Cape Town",
   email: "info@homeclinic.co.za",
-  quoteReturnEmail: "info@homeclinicstore.co.za",
+  quoteReturnEmail: "info@homeclinic.co.za",
   phoneDisplay: "+27 67 804 2273",
   phoneTel: "+27678042273",
   whatsapp: "27678042273",

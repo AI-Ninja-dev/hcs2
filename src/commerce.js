@@ -280,7 +280,7 @@
     try{
       const q=await buildQuotePdf({signed:true});
       q.doc.save(q.ref+"-signed.pdf");
-      const to=business.quoteReturnEmail||"info@homeclinicstore.co.za";
+      const to=business.quoteReturnEmail||"info@homeclinic.co.za";
       const subject="Signed quotation "+q.ref;
       const body="Hello HomeClinicStore,%0D%0A%0D%0APlease find my signed quotation "+encodeURIComponent(q.ref)+" attached.%0D%0A%0D%0AThe signed PDF has been downloaded to this device; please attach it to this email before sending.%0D%0A";
       window.location.href="mailto:"+encodeURIComponent(to)+"?subject="+encodeURIComponent(subject)+"&body="+body;
