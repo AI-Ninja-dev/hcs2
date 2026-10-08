@@ -2538,3 +2538,16 @@ html,body{max-width:100%;overflow-x:hidden}
 .minimal-footer .popia-mark span{font-size:10px;max-width:190px;color:#b7c5cf;line-height:1.5}
 .minimal-footer{padding-bottom:100px}
 @media(max-width:700px){.minimal-footer .footer-standards{align-items:flex-start;flex-direction:column}.footer-standards-marks{gap:16px 24px}.footer-standard-mark img{width:112px;height:46px}.minimal-footer .popia-mark strong{font-size:24px}.minimal-footer .popia-mark span{max-width:150px}}
+
+/* Keep CareGrid branding aligned in the section, preview and footer. */
+.caregrid-trademark{display:inline-flex;align-items:center;width:fit-content;max-width:100%;flex-shrink:0;line-height:1}
+.caregrid-copy>.caregrid-trademark{display:flex;width:260px;margin:0 0 14px}
+.caregrid-copy>.caregrid-trademark+.eyebrow{display:block;margin:0 0 20px}
+.caregrid-copy>.caregrid-trademark>sup{font-size:11px}
+.caregrid-ui-top .caregrid-trademark{width:132px;justify-self:start}
+.caregrid-brand-link .caregrid-trademark{width:110px}
+.minimal-footer .caregrid-brand-link{display:inline-flex;align-items:center;align-self:center;line-height:1}
+.minimal-footer .caregrid-brand-logo{width:110px;height:auto;filter:brightness(0) invert(1);opacity:.9}
+.minimal-footer .caregrid-trademark>sup{color:#fff}
+.minimal-footer .shell>div:has(>.caregrid-brand-link){align-items:center;gap:24px}
+@media(max-width:700px){.caregrid-copy>.caregrid-trademark{width:220px;margin-bottom:10px}.caregrid-copy>.caregrid-trademark+.eyebrow{font-size:10px;margin-bottom:18px}.caregrid-brand-link .caregrid-trademark{width:100px}.minimal-footer .caregrid-brand-logo{width:100px}}
