@@ -2525,3 +2525,17 @@ html,body{max-width:100%;overflow-x:hidden}
 @media(max-width:1100px) { .care-audience-site .nav-links { gap:12px; } .care-audience-site .nav-shop { display:none; } }
 @media(max-width:980px) { .care-start { grid-template-columns:1fr; gap:26px; } .audience-panel { padding:28px; } }
 @media(max-width:700px) { .audience-grid,.care-answer-grid { grid-template-columns:1fr; } .care-audience-site .minimal-hero { padding-top:36px; gap:32px; } .care-audience-site .minimal-hero-copy h1 { font-size:clamp(40px,11vw,58px)!important; line-height:1.06!important; } .care-audience-site .minimal-hero-copy>p { font-size:17px!important; } .audience-intro { padding-top:42px; } .care-audience-site .hero-actions { gap:12px; } .care-audience-site .hero-actions .btn { min-height:48px; font-size:14px; } .care-audience-site .minimal-hero-media,.care-audience-site .minimal-hero-media img { min-height:320px; height:320px; } .care-start { padding-bottom:42px; } .care-questions { padding-block:48px; } .audience-panel h3 { font-size:32px; } }
+
+/* Informational standards marks; scoped to the footer. */
+.minimal-footer .footer-standards{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:22px;border-top:1px solid #ffffff35;padding-top:26px;margin-top:16px}
+.footer-standards-label{font-size:13px;letter-spacing:.02em;color:#e2e8ed}
+.footer-standards-marks{display:flex;align-items:center;flex-wrap:wrap;gap:14px}
+.footer-standard-mark{display:flex;align-items:center;justify-content:center;min-height:76px;padding:12px 20px;background:#fff;color:#173f52;border-radius:8px;transition:background .2s}
+.footer-standard-mark:hover{background:#edf3f8}
+.footer-standard-mark img{width:126px;height:52px;object-fit:contain;display:block}
+.popia-mark{flex-direction:column;align-items:flex-start;gap:4px}
+.popia-mark strong{font:700 28px Manrope,system-ui,sans-serif;letter-spacing:.06em;line-height:1}
+.popia-mark span{font-size:10px;max-width:190px;color:#445965}
+@media(max-width:700px){.minimal-footer .footer-standards{align-items:flex-start;flex-direction:column}.footer-standard-mark{padding:12px 16px}.footer-standards-marks{gap:10px}}
+
+.minimal-footer .popia-mark strong{color:#173f52}.minimal-footer{padding-bottom:100px}
