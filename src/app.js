@@ -39,7 +39,7 @@ if ("IntersectionObserver" in window) {
 const products = {
   diabetes: {
     name: "Yuwell Anytime CT3 CGM",
-    description: "HomeClinicStore’s flagship CGM for adults 18+: a 14-day sensor paired with a reusable rechargeable transmitter and supported Bluetooth app for continuous glucose readings, trends and alerts. Current stock, supported phones and setup requirements are confirmed before order.",
+    description: "Yuwell Anytime CT3 CGM for adults 18+: a 14-day sensor paired with a reusable rechargeable transmitter and supported Bluetooth app for continuous glucose readings, trends and alerts. Current stock, supported phones and setup requirements are confirmed before order.",
     image: "https://cdeonline.co.za/wp-content/uploads/2024/08/AutoAppl-1-jpg.webp",
     alt: "Yuwell Anytime CT3 CGM auto-applicator and sensor",
   },
